@@ -19,7 +19,7 @@
 
 	<div>
 		<a
-			class="btn rounded-3xl text-xs font-semibold"
+			class="btn"
 			href="https://github.com/sozonome/sveltekit-tailwind"
 			target="_blank"
 			rel="noopener noreferrer"

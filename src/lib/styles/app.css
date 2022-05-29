@@ -8,6 +8,24 @@
 	}
 
 	.btn {
-		@apply text-white cursor-pointer text-sm text-center font-semibold bg-blue-600 rounded-2xl px-5 py-2.5;
+		@apply cursor-pointer inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
 	}
+
+	@font-face {
+		font-family: 'janguky';
+		font-style: regular;
+		src: url('/font/JANGKUY-RegularExpanded.otf') format('OpenType');
+	}
+
+	/* @font-face {
+		font-family: "janguky black";
+		font-style: black;
+		src: url("/font/JANGKUY-BlackExpanded.otf") format("OpenType");
+	  }
+	  
+	  @font-face {
+		font-family: "janguky bold";
+		font-style: bold;
+		src: url("/font/JANGKUY-BoldExpanded.otf") format("OpenType");
+	  } */
 }
