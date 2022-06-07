@@ -5,9 +5,10 @@
 
 <DefaultMetaTags />
 
-<div class="min-h-screen">
-	<main class="layout px-4 py-8">
-		<slot />
-	</main>
-	<Footer />
-</div>
+<!-- <div class="bg-fixed min-h-screen bg-black scroll-smooth">
+	<div class="bg-fixed bg-cream min-h-screen rounded-[130px]"> -->
+<main class="py-12 md:px-0 pt-20 ">
+	<slot />
+</main>
+<!-- </div>
+</div> -->
