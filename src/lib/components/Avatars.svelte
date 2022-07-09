@@ -1,8 +1,67 @@
+<script>
+	import { createEventDispatcher } from 'svelte';
+	import { user } from './store.js';
 
-  <div class="flex -space-x-2 "> 
-    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-  </div>
-  <!--overflow-hidden--
+	// 	function createUser() {
+	//   const { promise, resolve, reject } = promiser()
+
+	//   function start() {
+	//     try { ... resolve(user) }
+	//     catch { ... reject(user) }
+	//   }
+
+	//   let userWritable: Writable<user> & { promise }
+	//   userWritable = {
+	//     ...writeable(null, start),
+	//     promise
+	//   }
+
+	//   promise
+	//     .then(u => userWritable.set(u))
+	//     .catch(err => userWritable.set('Náo autorizado'))
+
+	//   return userWritable
+	// }
+
+	const characters = [
+		{ name: 'Expert', img: '/images/expert.png', av: '/images/expert_av.png' },
+		{ name: 'Park Employee', img: '/images/park_employee.png', av: '/images/employee_av.png' },
+		{
+			name: 'Annoying Child',
+			img: '/images/annoying_child.png',
+			av: '/images/annoying_child_av.png'
+		}
+	];
+
+	const dispatch = createEventDispatcher();
+
+	function dispatchChoice() {
+		dispatch('choose');
+	}
+
+	function chooseAvatar(character) {
+		return user.set({
+			character: character.name,
+			av: character.av,
+			score: 0
+		});
+	}
+
+	//add once to onclick?
+</script>
+
+<div class="flex min-w-0 md:-space-x-10">
+	<!-- <div class="flex "> -->
+	{#each characters as character}
+		<!-- <a href="/quiz" target="_self"> -->
+		<img
+			on:click={() => chooseAvatar(character)}
+			on:click={dispatchChoice}
+			class="self-start  scale-[.8] cursor-pointer w-1/3 h-auto"
+			src={character.img}
+			alt={character.name}
+		/>
+		<!-- </a> -->
+	{/each}
+</div>
+<!--overflow-hidden-->

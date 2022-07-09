@@ -1,67 +1,76 @@
 <script>
-    export let question;
-    export let nextQuestion;
-    import { score } from './store.js'
+	export let question;
+	export let nextQuestion;
+	import { user, score } from './store.js';
+	import Blurb from './Blurb.svelte';
+	import { createEventDispatcher } from 'svelte';
 
-    let isCorrect; 
-    let isAnswered = false; 
-    let answers = question.incorrect_answers.map(answer => {
-        return {
-            answer,
-            correct: false
-        }
-    })
-    let allAnswers = [
-        ...answers,
-        {
-            answer: question.correct_answer,
-            correct: true
-        }
-    ]
-    shuffle(allAnswers);
+	const dispatch = createEventDispatcher();
 
-    function shuffle(array){
-        array.sort(() => Math.random() - 0.5)
-    }
+	let isCorrect;
+	let isAnswered = false;
+	// let showBlurb = false;
 
-    function checkQuestion(correct) {
-        isAnswered = true;
-        isCorrect = correct;
-        if(correct) {
-            score.update((val) => val + 1)
-        }
-    }
+	// function handleBlurb(event) {
+	// 	event ? (showBlurb = true) : '';
+	// }
+
+	let answers = [
+		{
+			answer: question.incorrect_answer,
+			correct: false,
+			points: +question.points_die
+		}
+	];
+
+	let allAnswers = [
+		...answers,
+		{
+			answer: question.correct_answer,
+			correct: true,
+			points: +question.points_live
+		}
+	];
+	shuffle(allAnswers);
+
+	function shuffle(array) {
+		array.sort(() => Math.random() - 0.5);
+	}
+
+	function checkQuestion(answer) {
+		isAnswered = true;
+		isCorrect = answer.correct;
+		dispatch('answer', {
+			isCorrect
+		});
+
+		score.update((val) => val + answer.points);
+	}
 </script>
 
-<style>
-    h5.wrong {
-        color: blueviolet;
-    }
-    h5.wrong {
-        color: rgb(214, 68, 68);
-    }
-    h5.isCorrect  {
-        color: rgb(131, 202, 25);
-    }
-    .answer {
-        display: block;
-    }
-
-</style>
-
-<h3>{@html question.question}</h3>
-
+<!-- {#if showBlurb}
+	<Blurb />
+{:else} -->
 {#if isAnswered}
-<h5 class:isCorrect class:wrong={!isCorrect}>
-    {#if isCorrect}You got it right!{:else}You goofed up{/if}
-</h5>
+	<h5 class:isCorrect class:wrong={!isCorrect}>
+		{#if isCorrect}You got it right!{:else}You goofed up{/if}
+	</h5>
 {/if}
 
-{#each allAnswers as answer }
-<button class="answer" on:click={() => checkQuestion(answer.correct)}>{@html answer.answer}</button>
-{/each}
-{#if isAnswered}
-<div>
-    <button on:click={nextQuestion}>Next Question</button>
+<img class="w-11/12" src="/images/question_illustration.png" alt="caged dinosaur" />
+<div class="mx-10">
+	<p class="font-bold text-xl font-poppins mx-4 pr-10">{@html question.question}</p>
+
+	<div class="flex gap-x-4 pt-8 w-11/12">
+		{#each allAnswers as answer}
+			<button class=" btn text-base font-body" on:click={() => checkQuestion(answer)}
+				>{@html answer.answer}</button
+			>
+		{/each}
+	</div>
 </div>
+{#if isAnswered}
+	<div>
+		<button class="btn2" on:click={nextQuestion}>Next Question</button>
+	</div>
 {/if}

@@ -10,8 +10,12 @@ module.exports = {
 				pink: '#D0A8D7',
 				blackish: '#1F1E1E'
 			},
+			backgroundImage: {
+				'split-black-cream': 'linear-gradient(to right, #1F1E1E 50% , #EEEAE0 50%);'
+			},
 			fontFamily: {
-				janguky: ['janguky', 'regular']
+				janguky: ['janguky', 'regular'],
+				body: ['Poppins']
 			},
 			fontSize: {
 				h1: '110px',

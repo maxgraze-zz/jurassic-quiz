@@ -7,7 +7,7 @@
 
 <!-- <div class="bg-fixed min-h-screen bg-black scroll-smooth">
 	<div class="bg-fixed bg-cream min-h-screen rounded-[130px]"> -->
-<main class="py-12 md:px-0 pt-20 ">
+<main class="min-h-screen px-8 md:pt-24 md:mx-48 no-scrollbar select-none">
 	<slot />
 </main>
 <!-- </div>

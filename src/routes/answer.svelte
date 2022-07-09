@@ -1,6 +1,7 @@
 <script>
 	import CTASection from '$lib/components/samples/CTASection.svelte';
 	import SomeText from '$lib/components/samples/SomeText.svelte';
+	import Arrow from '$lib/components/images/Arrow.svelte';
 	//flex flex-col gap-8 min-h-[80vh]
 </script>
 
