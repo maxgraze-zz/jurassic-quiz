@@ -51,7 +51,7 @@
 	</div>
 </div> -->
 
-<html lang="en">
+<html class="blurb" lang="en">
 	<body>
 		<div class="grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">

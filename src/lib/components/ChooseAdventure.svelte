@@ -1,5 +1,4 @@
 <script>
-	import Mode from '$lib/components/Mode.svelte';
 	import SpoilerStar from './images/spoilerStar.svelte';
 	import RegStar from './images/regStar.svelte';
 	import { createEventDispatcher } from 'svelte';

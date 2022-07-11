@@ -18,7 +18,7 @@
 	</div>
 </div> -->
 
-<html lang="en">
+<html class="gradient" lang="en">
 	<body>
 		<div class="grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">content</div>
@@ -30,7 +30,7 @@
 </html>
 
 <style>
-	html {
+	.gradient {
 		overflow: hidden;
 		/* background-color: theme('colors.purple'); */
 		background: linear-gradient(

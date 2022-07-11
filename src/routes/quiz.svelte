@@ -3,11 +3,21 @@
 	import Avatars from '$lib/components/Avatars.svelte';
 	import Blurb from '$lib/components/Blurb.svelte';
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
+	import { onMount } from 'svelte';
 
 	let show = 'chooseAdventure';
 	let showBlurb = false;
 	let live = false;
 	let quizData = '';
+
+	const colors = {
+		purple: '#B353AD',
+		khaki: '#858039',
+		cream: '#EEEAE0',
+		pink: '#D0A8D7',
+		blackish: '#1F1E1E'
+	};
+
 	function handleComponent(event) {
 		show === 'chooseAdventure' ? (show = 'avatars') : (show = 'quiz');
 	}
@@ -15,12 +25,27 @@
 	function handleMessage(event) {
 		event.detail.isCorrect === true ? (live = true) : (live = false);
 		showBlurb = true;
+		htmlBg.style.setProperty(
+			'--tunnel',
+			`linear-gradient(
+			to right,
+			${colors.purple}  0%,
+			${colors.purple} 50%,
+			${colors.blackish} 50%,
+			${colors.blackish} 100%
+		)`
+		);
 	}
 	function handleMode(event) {
 		show = 'avatars';
 		if (event.detail.adventure === 'regular') quizData = 'data/data.csv';
 		else quizData = 'data/data.csv';
 	}
+
+	let htmlBg;
+	onMount(() => {
+		htmlBg = document.querySelector('html');
+	});
 </script>
 
 {#if show === 'chooseAdventure'}
