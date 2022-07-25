@@ -64,11 +64,11 @@
 		doloremque perspiciatis dolorem alias esse corporis maxime quaerat! Voluptatum sequi cum culpa
 		nulla accusamus dignissimos! Unde aliquid possimus dicta incidunt officiis perspiciatis ex
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
+		<div class="w-full relative flex ">
+			<img class="" src="/images/dino1.png" alt="dino" />
+			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+		</div>
 	</section>
-	<div class="w-full relative flex ">
-		<img class="" src="/images/dino1.png" alt="dino" />
-		<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
-	</div>
 	<!-- <button on:click={scrollToTop}> SCROLL TO TOP </button> -->
 </div>
 <!-- </html> -->

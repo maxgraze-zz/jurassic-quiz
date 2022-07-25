@@ -2,13 +2,14 @@
 	import Avatars from '$lib/components/Avatars.svelte';
 	import Gauge from './Gauge.svelte';
 	import { score, user } from './store';
+	import { createEventDispatcher } from 'svelte';
+
+const dispatch = createEventDispatcher();
 
 	export let live;
-	let userScore;
+	export let showBlurb
 
-	score.subscribe((value) => {
-		userScore = value;
-	});
+	console.log(showBlurb)
 
 	let blurb = {
 		title: '',
@@ -34,22 +35,22 @@
 		if (!el) return;
 		el.scrollIntoView();
 	}
-	// function resetQuiz() {
-	// 	score.set(0);
+	function resetQuiz() {
+		score.set(0);
+	}
 
+	
+	function continueQuiz(){
+		showBlurb = false
+		dispatch('continueQuiz', {
+			showBlurb 
+		});
+	}
 	// 	activeQuestion = 0;
 	// 	quiz = getQuiz();
 	// }
 </script>
 
-<!-- <div class="container mx-auto box items-center">
-	<div class="flex flex-col text-center ">
-		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl">
-			Pick your <span class="text-purple">player</span>!
-		</h1>
-		<Avatars />
-	</div>
-</div> -->
 
 <html class="blurb" lang="en">
 	<body>
@@ -59,7 +60,7 @@
 			</div>
 			<div class="align-center mt-20 justify-center flex flex-col">
 				<div class=" -mt-10 w-2/3 flex flex-row ml-24">
-					<img src={$user.av} alt={$user.character} class="px-8 scale-75 " />
+					<img src={$user.av} alt={$user.character} class="px-8 " />
 					<Gauge />
 				</div>
 				<div class="text-center space-y-8">
@@ -70,26 +71,38 @@
 					</p>
 					<p class="font-body mx-24 font-bold text-3xl">
 						You {blurb.wl}
-						{userScore} points of Darwin’s score.
+						{$score} points of Darwin’s score.
 					</p>
-
+<div class="flex justify-center">
 					<a href="#s1" on:click={scrollIntoView}>
 						<img src="/images/arrow.png" alt="down arrow" /></a
 					>
 				</div>
-				<!-- <div class="mx-auto pt-28" id="s1">
-					<p>
-						Text about the data and the number of accident while moving one dino to another
-						location. Text about the data and the number of accident while moving one dino to
-						another location. Text about the data and the number of accident while moving one dino
-						to another location. Text about the data and the number of accident while moving one
-						dino to another location Text about the data and the number of accident while moving one
-						dino to another location. Text about the data and the number of accident while
-					</p>
-				</div> -->
-				<!-- <button on:click={resetQuiz}>Start New Quiz</button> -->
-			</div>
+				</div>
 		</div>
+		</div>
+		<section class="grid grid-cols-2 grid-rows-1">
+			<div class="align-center mt-20 justify-center flex">
+				<img src={blurb.src} alt="dino illustration" class="pb-14" />
+			</div>
+			<div class="align-center mt-20 justify-center flex flex-col">
+				<div class="text-justify px-28" id='s1'>
+						<p>	Text about the data and the number of accident while moving one dino to another
+							location. Text about the data and the number of accident while moving one dino to
+							another location. Text about the data and the number of accident while moving one dino
+							to another location. Text about the data and the number of accident while moving one
+							dino to another location Text about the data and the number of accident while moving one
+							dino to another location. Text about the data and the number of accident while</p>		
+			
+		<div>
+			{#if live}
+			<button class="btn2" on:click={continueQuiz}>Next Question</button> 
+
+			{:else}
+			<button on:click={resetQuiz}>Start New Quiz</button> 
+{/if}
+		</div>
+					</section>
 	</body>
 </html>
 
@@ -118,5 +131,9 @@
 			theme('colors.cream') 50%,
 			theme('colors.cream') 100%
 		);
+	}
+
+	section {
+		min-height: 100vh;
 	}
 </style>

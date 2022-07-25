@@ -43,9 +43,12 @@
 		dispatch('answer', {
 			isCorrect
 		});
-
-		score.update((val) => val + answer.points);
-	}
+		// if ($score <= 0 && !isCorrect) {	
+		// 	return;}	
+		// else
+		 score.update((val) => val + answer.points)
+			
+			}
 </script>
 
 <!-- {#if showBlurb}

@@ -42,6 +42,10 @@
 		else quizData = 'data/data.csv';
 	}
 
+	function handleQuiz(event) {
+		showBlurb= event.detail.showBlurb
+
+	}
 	let htmlBg;
 	onMount(() => {
 		htmlBg = document.querySelector('html');
@@ -61,7 +65,7 @@
 		<!-- </div> -->
 	</div>
 {:else if showBlurb}
-	<Blurb {live} />
+	<Blurb {showBlurb}{live} on:continueQuiz={handleQuiz} />
 {:else}
 	<Quiz {quizData} on:answer={handleMessage} />
 {/if}

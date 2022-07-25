@@ -42,6 +42,7 @@
 				<stop offset="100%" style="stop-color:#B353AD;stop-opacity:1" />
 			</linearGradient>
 		</defs>
+		{#if $score >=0}
 		<rect fill="url(#grad1)" width={rectWidth} height={rectHeight} rx="12" />
 		<rect style={move(rectX, rectY)} height="16" width="18" rx="8" fill="#1F1E1E" />
 		<text
@@ -50,12 +51,24 @@
 			style={move(rectX + 9, rectY / 2 + 12)}
 			fill="#EEEAE0">{$score}</text
 		>
+		{:else}
+		<rect fill="url(#grad1)" width={rectWidth} height={rectHeight} rx="12" />
+		<rect x={2} y={2} height="16" width="18" rx="8" fill="#1F1E1E" />
+		<text
+		x={11} y={12} 
+			class="text-xs text-justify"
+			text-anchor="middle"
+			fill="#EEEAE0">{$score}</text
+		>
+		{/if}
 		<text fill="black" x="0" y="30">0</text>
 		<text fill="black" x="59" y="30">50</text>
 		<text fill="black" x="110" y="30">100</text>
 		<line x1={x} y1="-5" x2={x} y2="100" stroke="black" stroke-dasharray="3 2" />
 	</svg>
 </div>
+<!-- style={move(rectX + 9, rectY / 2 + 12)}
+style={move(rectX, rectY)}  -->
 
 <style>
 	text {

@@ -5,7 +5,6 @@
 
 	const dispatch = createEventDispatcher();
 	function dispatchMode(adventure) {
-		console.log(adventure);
 		dispatch('mode', {
 			adventure
 		});

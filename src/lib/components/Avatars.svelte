@@ -50,7 +50,7 @@
 	//add once to onclick?
 </script>
 
-<div class="flex min-w-0 md:-space-x-10">
+<div class="flex min-w-0 md:-space-x-4">
 	<!-- <div class="flex "> -->
 	{#each characters as character}
 		<!-- <a href="/quiz" target="_self"> -->
