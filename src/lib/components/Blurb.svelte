@@ -7,9 +7,15 @@
 const dispatch = createEventDispatcher();
 
 	export let live;
-	export let showBlurb
+	// export let activeQuestion;
+	export let activeQuestion;
+	// export let showBlurb
 
-	console.log(showBlurb)
+	// console.log(showBlurb)
+	
+	function nextQuestion() {
+		activeQuestion = activeQuestion + 1;
+	}
 
 	let blurb = {
 		title: '',
@@ -40,12 +46,12 @@ const dispatch = createEventDispatcher();
 	}
 
 	
-	function continueQuiz(){
-		showBlurb = false
-		dispatch('continueQuiz', {
-			showBlurb 
-		});
-	}
+	// function continueQuiz(){
+	// 	showBlurb = false
+	// 	dispatch('continueQuiz', {
+	// 		showBlurb 
+	// 	});
+	// }
 	// 	activeQuestion = 0;
 	// 	quiz = getQuiz();
 	// }
@@ -96,7 +102,7 @@ const dispatch = createEventDispatcher();
 			
 		<div>
 			{#if live}
-			<button class="btn2" on:click={continueQuiz}>Next Question</button> 
+			<button class="btn2" on:click={nextQuestion}>Next Question</button> 
 
 			{:else}
 			<button on:click={resetQuiz}>Start New Quiz</button> 

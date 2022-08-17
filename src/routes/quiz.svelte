@@ -4,9 +4,10 @@
 	import Blurb from '$lib/components/Blurb.svelte';
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
+import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 
 	let show = 'chooseAdventure';
-	let showBlurb = false;
+	// let showBlurb = false;
 	let live = false;
 	let quizData = '';
 
@@ -24,7 +25,7 @@
 
 	function handleMessage(event) {
 		event.detail.isCorrect === true ? (live = true) : (live = false);
-		showBlurb = true;
+		// showBlurb = true;
 		htmlBg.style.setProperty(
 			'--tunnel',
 			`linear-gradient(
@@ -42,10 +43,10 @@
 		else quizData = 'data/data.csv';
 	}
 
-	function handleQuiz(event) {
-		showBlurb= event.detail.showBlurb
+	// function handleQuiz(event) {
+	// 	showBlurb= event.detail.showBlurb
 
-	}
+	// }
 	let htmlBg;
 	onMount(() => {
 		htmlBg = document.querySelector('html');
@@ -64,8 +65,10 @@
 		<Avatars on:choose={handleComponent} />
 		<!-- </div> -->
 	</div>
-{:else if showBlurb}
-	<Blurb {showBlurb}{live} on:continueQuiz={handleQuiz} />
+<!-- {:else if showBlurb}
+	<Blurb {showBlurb}{live} on:continueQuiz={handleQuiz} /> -->
 {:else}
-	<Quiz {quizData} on:answer={handleMessage} />
+	<Quiz {quizData} {live} />
+	<SocialShare/>
+	<!-- <Quiz {quizData} on:answer={handleMessage} /> -->
 {/if}

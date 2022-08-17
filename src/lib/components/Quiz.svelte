@@ -9,6 +9,7 @@
 	import { csv } from 'd3';
 
 	export let quizData;
+	export let live 
 	let showBlurb = false;
 
 	function handleBlurb(event) {
@@ -49,6 +50,10 @@
 
 <!-- <div class="flex flex-col"> -->
 
+	{#if showBlurb}
+
+	<Blurb {live} {activeQuestion}/>
+{:else}
 <div class=" -mt-20 w-1/2 flex flex-row float-right place-center">
 	<!-- <div class=""> -->
 	<!-- <div class=" h-full  px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative"> -->
@@ -76,15 +81,15 @@
 					<Blurb /> -->
 				<!-- {:else} -->
 				<div in:fly={{ x: 100 }} out:fly|local={{ x: -200 }} class="">
-					<Question on:answer {nextQuestion} {question} />
-					<!-- <Question on:click={handleBlurb} {nextQuestion} {question} /> -->
+					<!-- <Question on:answer {nextQuestion} {question} /> -->
+					<Question on:click={handleBlurb} {live} {activeQuestion} {question} />
 				</div>
 			{/if}
 			<!-- {/if} -->
 		{/each}
 	{/await}
 </div>
-
+{/if}
 <!-- </div> -->
 <style>
 </style>

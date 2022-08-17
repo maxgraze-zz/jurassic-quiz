@@ -1,6 +1,7 @@
 <script>
 	export let question;
-	export let nextQuestion;
+	export let activeQuestion;
+	export let live
 	import { user, score } from './store.js';
 	import Blurb from './Blurb.svelte';
 	import { createEventDispatcher } from 'svelte';
@@ -73,7 +74,8 @@
 	</div>
 </div>
 {#if isAnswered}
-	<div>
+<Blurb {live} {activeQuestion}/>
+	<!-- <div>
 		<button class="btn2" on:click={nextQuestion}>Next Question</button>
-	</div>
+	</div> -->
 {/if}
