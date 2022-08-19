@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
+	// throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
+	import { page } from '$app/stores';
 
 	// import type { ErrorLoad } from '@sveltejs/kit';
 
@@ -12,7 +13,10 @@
 	// };
 </script>
 
-<script lang="ts">
+<h1>{$page.status} : {$page.error.message}</h1>
+
+
+<!-- <script lang="ts">
 	export let title: string;
 </script>
 
@@ -34,4 +38,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
