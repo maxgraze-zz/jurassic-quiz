@@ -1,0 +1,91 @@
+{
+  ".svelte-kit/build/index.js": {
+    "file": "index.js",
+    "src": ".svelte-kit/build/index.js",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/build/hooks.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/+layout-f2b4e1d8.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/plus-jakarta-sans-latin-200-normal-e0e9c45c.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-200-normal-1bb99eca.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-300-normal-c516d548.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-300-normal-06c7fc6c.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-400-normal-deeb6f39.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-400-normal-698bd9d3.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-500-normal-a3ddfd67.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-500-normal-bdb90dec.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-600-normal-edd3227f.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-600-normal-fa38ec92.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-700-normal-ff11e55b.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-700-normal-71eb3afc.woff",
+      "_app/immutable/assets/plus-jakarta-sans-latin-800-normal-83b0bc1b.woff2",
+      "_app/immutable/assets/plus-jakarta-sans-latin-800-normal-478474fd.woff"
+    ]
+  },
+  "src/routes/+error.svelte": {
+    "file": "entries/pages/_error.svelte.js",
+    "src": "src/routes/+error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/+page-6b2ff314.css",
+      "_app/immutable/assets/Blurb-4ac0d5bc.css"
+    ]
+  },
+  "src/routes/blurb/+page.svelte": {
+    "file": "entries/pages/blurb/_page.svelte.js",
+    "src": "src/routes/blurb/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/+page-d5cc4bed.css"
+    ]
+  },
+  "src/routes/quiz/+page.svelte": {
+    "file": "entries/pages/quiz/_page.svelte.js",
+    "src": "src/routes/quiz/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/+page-aa81d104.css",
+      "_app/immutable/assets/Blurb-4ac0d5bc.css"
+    ]
+  },
+  "_index.js": {
+    "file": "chunks/index.js"
+  },
+  ".svelte-kit/build/hooks.js": {
+    "file": "chunks/hooks.js",
+    "src": ".svelte-kit/build/hooks.js",
+    "isDynamicEntry": true
+  }
+}
