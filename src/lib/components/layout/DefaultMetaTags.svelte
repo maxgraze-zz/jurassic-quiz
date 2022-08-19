@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { MetaTags } from 'svelte-meta-tags';
 </script>
 
@@ -17,4 +17,4 @@
 		site: 'https://sznm.dev',
 		cardType: 'summary_large_image'
 	}}
-/>
+/> -->

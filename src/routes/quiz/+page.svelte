@@ -55,6 +55,8 @@ import Meta from '$lib/components/Meta.svelte'
 		htmlBg = document.querySelector('html');
 	});
 </script>
+<SocialShare/>
+<Meta img="annoying_child"/>
 
 {#if show === 'chooseAdventure'}
 	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} />
@@ -72,7 +74,5 @@ import Meta from '$lib/components/Meta.svelte'
 	<Blurb {showBlurb}{live} on:continueQuiz={handleQuiz} /> -->
 {:else}
 	<Quiz {quizData} {live} />
-	<SocialShare/>
-	<Meta img="annoying_child"/>
 	<!-- <Quiz {quizData} on:answer={handleMessage} /> -->
 {/if}
