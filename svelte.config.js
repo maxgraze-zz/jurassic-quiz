@@ -12,7 +12,10 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		methodOverride: {
+			allowed: ['PUT', 'DELETE']
+		}
 	}
 };
 
