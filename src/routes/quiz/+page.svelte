@@ -5,6 +5,7 @@
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
 import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
+import Meta from '$lib/components/Meta.svelte'
 
 
 	let show = 'chooseAdventure';
@@ -72,5 +73,6 @@ import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 {:else}
 	<Quiz {quizData} {live} />
 	<SocialShare/>
+	<Meta img="annoying_child"/>
 	<!-- <Quiz {quizData} on:answer={handleMessage} /> -->
 {/if}
