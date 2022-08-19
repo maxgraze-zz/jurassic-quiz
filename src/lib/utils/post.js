@@ -63,7 +63,7 @@ let url = "https://script.google.com/macros/s/AKfycbwk8ByABNIEd4aCvyvA9Wlebu6IkO
 // 		let result = JSON.stringify(json)
 // 	}
 
-export default function doPost() {
+export default async function doPost() {
     let json = JSON.stringify(data)
 // let json = `submission=${JSON.stringify(data2)}`
 
