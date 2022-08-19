@@ -10,7 +10,7 @@
 </svelte:head>
 <!-- <div class="text-center bg-cream bg-contain rounded-[60px] lg:text-left"> -->
 <div class="container mx-auto ">
-	<div class="grid lg:grid-cols-2 gap-12 flex items-center ">
+	<div class="grid lg:grid-cols-2 gap-12 items-center ">
 		<div class="mb-12 lg:mb-0">
 			<div class="embed-responsive embed-responsive-16by9 relative w-full rounded-lg shadow-lg" />
 		</div>
@@ -29,4 +29,3 @@
 		<a href=""><img src="/images/arrow.png" alt="down arrow" /></a>
 	</div>
 </div>
-<!-- </div> -->
