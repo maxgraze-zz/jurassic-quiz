@@ -1,6 +1,5 @@
 <script>
 	import Avatars from '$lib/components/Avatars.svelte';
-	import Answer from './answer.svelte';
 	import Quiz from '$lib/components/Quiz.svelte';
 
 	let box;
