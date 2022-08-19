@@ -8,6 +8,7 @@
 </script>
 
 <sveltekit:head>
+	<meta content="text/html; charset=UTF-8" name="Content-Type" />
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<meta name="author" content="Datacitron & Max Graze" />
