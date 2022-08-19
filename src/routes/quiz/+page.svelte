@@ -7,8 +7,17 @@
 import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 import Meta from '$lib/components/Meta.svelte'
 import doPost from '$lib/utils/post'
+
+
+
+const data = {
+  id: 1,
+  character: 'Expert',
+  score: 80
+}
+
 	onMount( async() => {
-		 await doPost();
+		 await doPost(data);
 	});
 
 	let show = 'chooseAdventure';

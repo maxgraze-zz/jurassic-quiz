@@ -1,6 +1,6 @@
 <script>
-	export let title = "Title TK";
-	export let description = "Description TK";
+	export let title = "Jurassic Franchise Quiz";
+	export let description = "I survived Jurassic Park!";
 	export let url = "https://pudding.cool";
 	export let keywords = "";
 	export let preloadFont = [];
@@ -8,6 +8,7 @@
 </script>
 
 <sveltekit:head>
+	<meta content="text/html; charset=UTF-8" name="Content-Type" />
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<meta name="author" content="Datacitron & Max Graze" />
@@ -20,7 +21,7 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:locale" content="en_US" />
 
-	<meta property="og:image" content="images/{img}" />
+	<meta property="og:image" content="images/annoying_child.png" />
 	<meta property="og:image:type" content="image/png" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="600" />
@@ -30,7 +31,7 @@
 	<meta name="twitter:creator" content="@datacitron @maxgraze" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image:src" content="images/{img}.png" />
+	<meta name="twitter:image" content="images/annoying_child.png"  />
 
 	<meta name="robots" content="max-image-preview:large" />
 
