@@ -17,9 +17,9 @@
 		event ? (showBlurb = true) : '';
 	}
 
-	onMount( () => {
-		 doPost();
-	});
+	// onMount( () => {
+	// 	 doPost();
+	// });
 
 	// $: console.log(data);
 	let activeQuestion = 0;

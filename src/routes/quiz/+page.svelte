@@ -6,7 +6,10 @@
 	import { onMount } from 'svelte';
 import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 import Meta from '$lib/components/Meta.svelte'
-
+import doPost from '$lib/utils/post'
+	onMount( () => {
+		 doPost();
+	});
 
 	let show = 'chooseAdventure';
 	// let showBlurb = false;
@@ -55,7 +58,7 @@ import Meta from '$lib/components/Meta.svelte'
 		htmlBg = document.querySelector('html');
 	});
 </script>
-<SocialShare/>
+<!-- <SocialShare/> -->
 <Meta img="annoying_child"/>
 
 {#if show === 'chooseAdventure'}
