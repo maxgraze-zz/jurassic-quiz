@@ -7,6 +7,7 @@
 	import Blurb from './Blurb.svelte';
 	import { transition_in } from 'svelte/internal';
 	import { csv } from 'd3';
+	import doPost from '$lib/utils/post'
 
 	export let quizData;
 	export let live 
@@ -16,8 +17,8 @@
 		event ? (showBlurb = true) : '';
 	}
 
-	onMount(async () => {
-		// data = await csv(url);
+	onMount( () => {
+		 doPost();
 	});
 
 	// $: console.log(data);

@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 
+
 	let show = 'chooseAdventure';
 	// let showBlurb = false;
 	let live = false;
@@ -18,6 +19,7 @@ import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 		pink: '#D0A8D7',
 		blackish: '#1F1E1E'
 	};
+
 
 	function handleComponent(event) {
 		show === 'chooseAdventure' ? (show = 'avatars') : (show = 'quiz');
