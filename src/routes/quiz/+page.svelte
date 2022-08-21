@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
 import Meta from '$lib/components/Meta.svelte'
+import doPost from '$lib/utils/post'
 
 
 	let show = 'chooseAdventure';
@@ -51,11 +52,13 @@ import Meta from '$lib/components/Meta.svelte'
 
 	// }
 	let htmlBg;
-	onMount(() => {
+	onMount( () => {
+		 doPost()
 		htmlBg = document.querySelector('html');
+
 	});
 </script>
-<SocialShare/>
+<!-- <SocialShare/> -->
 <Meta img="annoying_child"/>
 
 {#if show === 'chooseAdventure'}

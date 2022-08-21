@@ -25,8 +25,8 @@ const data = {
     character: 'Expert',
     score: 80
 }
-let url = "https://script.google.com/macros/s/AKfycbwk8ByABNIEd4aCvyvA9Wlebu6IkOPjpIkWV64hmgP3zuriTGcMtN3ofAZvWUxbE-9Bbw/exec"
-
+// let url = "https://script.google.com/macros/s/AKfycbwiVcuRLyG_kFJyxuakUSOsY-UTjt6fxlZ6jyPI9EK-0xFKqoX5xNMMg8VPjh6SO50Wcw/exec"
+let url = "https://script.google.com/macros/s/AKfycbzdt8mJT-1FaDiLaDx7HEisE5Wq6tycRXOEgT7z4j0N8PgMDd4WXKZcE2t15ab9O8srXA/exec"
 // export default async function doPost () {
 //     const res = await fetch(url, {
 //         method: 'POST',

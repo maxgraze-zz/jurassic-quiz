@@ -3,6 +3,14 @@
 	import Quiz from '$lib/components/Quiz.svelte';
 
 	let box;
+	let trexSound 
+
+
+	function playSound() {
+		setTimeout(() => {
+			trexSound.play()
+		},500)	
+	}
 	function scrollToTop() {
 		box.scrollIntoView();
 	}
@@ -36,7 +44,7 @@
 <div class="container mx-auto box items-center" bind:this={box}>
 	<div class="flex flex-col min-h-screen text-center ">
 		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl ">
-			How would <br />you <span class="text-purple">die</span> in <br />Jurassic movies?
+			How would <br />you <span class="text-purple">die</span> in <br /> movies?
 		</h1>
 		<p class="text-lg pt-6 uppercase">A data game by Max Graze & Datacitron</p>
 
@@ -65,9 +73,17 @@
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
 		<div class="w-full relative flex ">
 			<img class="" src="/images/dino1.png" alt="dino" />
-			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+			<a href="/quiz"><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
 		</div>
+		<button on:click={playSound} > sound!</button>
+
+		<audio src="audio/t_rex.mp3" preload=auto bind:this={trexSound} controls>
+			<!-- <audio src=https://www.myinstants.com/media/sounds/m4a1_single-kibblesbob-8540445.mp3 preload=auto bind:this={trexSound} controls> -->
+
+			<track kind="captions"/>
+		</audio>
 	</section>
+
 	<!-- <button on:click={scrollToTop}> SCROLL TO TOP </button> -->
 </div>
 <!-- </html> -->
@@ -76,5 +92,9 @@
 <style>
 	section {
 		min-height: 100vh;
+	}
+
+	audio {
+		display: none
 	}
 </style>
