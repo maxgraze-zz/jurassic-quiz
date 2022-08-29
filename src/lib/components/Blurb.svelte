@@ -2,19 +2,15 @@
 	import Avatars from '$lib/components/Avatars.svelte';
 	import Gauge from './Gauge.svelte';
 	import { score, user } from './store';
-	import { createEventDispatcher } from 'svelte';
 
-const dispatch = createEventDispatcher();
 
-	export let live;
-	// export let activeQuestion;
+	export let isCorrect;
 	export let activeQuestion;
-	// export let showBlurb
+	export let currentQuestion
 
-	// console.log(showBlurb)
-	
 	function nextQuestion() {
 		activeQuestion = activeQuestion + 1;
+		currentQuestion = true
 	}
 
 	let blurb = {
@@ -24,7 +20,7 @@ const dispatch = createEventDispatcher();
 		src: ''
 	};
 
-	if (live) {
+	if (isCorrect) {
 		blurb.title = 'you live';
 		blurb.subtitle = '(for now)';
 		blurb.wl = 'win';
@@ -43,6 +39,8 @@ const dispatch = createEventDispatcher();
 	}
 	function resetQuiz() {
 		score.set(0);
+		currentQuestion = true
+
 	}
 
 	
@@ -100,13 +98,9 @@ const dispatch = createEventDispatcher();
 							dino to another location Text about the data and the number of accident while moving one
 							dino to another location. Text about the data and the number of accident while</p>		
 			
-		<div>
-			{#if live}
 			<button class="btn2" on:click={nextQuestion}>Next Question</button> 
 
-			{:else}
-			<button on:click={resetQuiz}>Start New Quiz</button> 
-{/if}
+			<a href="/"><button on:click={resetQuiz}>Start New Quiz</button> </a> 
 		</div>
 					</section>
 	</body>

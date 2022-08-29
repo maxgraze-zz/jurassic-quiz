@@ -1,6 +1,11 @@
 <script>
-	import Avatars from '$lib/components/Avatars.svelte';
-	import Quiz from '$lib/components/Quiz.svelte';
+	let trexSound 
+
+	function playSound() {
+		setTimeout(() => {
+			trexSound.play()
+		},500)	
+	}
 
 	let box;
 	function scrollToTop() {
@@ -63,10 +68,17 @@
 		doloremque perspiciatis dolorem alias esse corporis maxime quaerat! Voluptatum sequi cum culpa
 		nulla accusamus dignissimos! Unde aliquid possimus dicta incidunt officiis perspiciatis ex
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
-		<div class="w-full relative flex ">
+		<div class="w-full relative flex pb-10 ">
 			<img class="" src="/images/dino1.png" alt="dino" />
-			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+			<a href="/quiz"><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
 		</div>
+		<!-- <button on:click={playSound} > sound!</button> -->
+
+		<audio src="audio/t_rex.mp3" preload=auto bind:this={trexSound} controls>
+			<!-- <audio src=https://www.myinstants.com/media/sounds/m4a1_single-kibblesbob-8540445.mp3 preload=auto bind:this={trexSound} controls> -->
+
+			<track kind="captions"/>
+		</audio>
 	</section>
 	<!-- <button on:click={scrollToTop}> SCROLL TO TOP </button> -->
 </div>
@@ -76,5 +88,9 @@
 <style>
 	section {
 		min-height: 100vh;
+	}
+
+	audio {
+		display: none
 	}
 </style>

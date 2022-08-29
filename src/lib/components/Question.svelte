@@ -1,20 +1,13 @@
 <script>
-	export let question;
-	export let activeQuestion;
-	export let live
+
 	import { user, score } from './store.js';
 	import Blurb from './Blurb.svelte';
 	import { createEventDispatcher } from 'svelte';
-
+	export let question;
+	export let activeQuestion;
 	const dispatch = createEventDispatcher();
-
 	let isCorrect;
-	let isAnswered = false;
-	// let showBlurb = false;
-
-	// function handleBlurb(event) {
-	// 	event ? (showBlurb = true) : '';
-	// }
+ $: currentQuestion = true
 
 	let answers = [
 		{
@@ -39,27 +32,17 @@
 	}
 
 	function checkQuestion(answer) {
-		isAnswered = true;
+		// isAnswered.update(n => n = true) 
+		currentQuestion = false
 		isCorrect = answer.correct;
 		dispatch('answer', {
 			isCorrect
 		});
-		// if ($score <= 0 && !isCorrect) {	
-		// 	return;}	
-		// else
+	
 		 score.update((val) => val + answer.points)
 			
 			}
 </script>
-
-<!-- {#if showBlurb}
-	<Blurb />
-{:else} -->
-{#if isAnswered}
-	<h5 class:isCorrect class:wrong={!isCorrect}>
-		{#if isCorrect}You got it right!{:else}You goofed up{/if}
-	</h5>
-{/if}
 
 <img class="w-11/12" src="/images/question_illustration.png" alt="caged dinosaur" />
 <div class="mx-10">
@@ -73,9 +56,7 @@
 		{/each}
 	</div>
 </div>
-{#if isAnswered}
-<Blurb {live} {activeQuestion}/>
-	<!-- <div>
-		<button class="btn2" on:click={nextQuestion}>Next Question</button>
-	</div> -->
+{#if !currentQuestion}
+<Blurb {isCorrect} {activeQuestion} bind:currentQuestion />
+
 {/if}

@@ -10,7 +10,6 @@ import doPost from '$lib/utils/post'
 
 
 	let show = 'chooseAdventure';
-	// let showBlurb = false;
 	let live = false;
 	let quizData = '';
 
@@ -47,13 +46,10 @@ import doPost from '$lib/utils/post'
 		else quizData = 'data/data.csv';
 	}
 
-	// function handleQuiz(event) {
-	// 	showBlurb= event.detail.showBlurb
 
-	// }
 	let htmlBg;
 	onMount( () => {
-		 doPost()
+		//  doPost()
 		htmlBg = document.querySelector('html');
 
 	});
@@ -71,11 +67,8 @@ import doPost from '$lib/utils/post'
 		</h1>
 
 		<Avatars on:choose={handleComponent} />
-		<!-- </div> -->
 	</div>
-<!-- {:else if showBlurb}
-	<Blurb {showBlurb}{live} on:continueQuiz={handleQuiz} /> -->
+
 {:else}
-	<Quiz {quizData} {live} />
-	<!-- <Quiz {quizData} on:answer={handleMessage} /> -->
+	<Quiz {quizData} />
 {/if}

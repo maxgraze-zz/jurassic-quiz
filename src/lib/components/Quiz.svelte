@@ -2,27 +2,21 @@
 	import { fade, blur, fly, slide, scale } from 'svelte/transition';
 	import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte';
 	import Question from './Question.svelte';
-	import { score, user } from './store.js';
+	import { score, user, isAnswered } from './store.js';
 	import Gauge from './Gauge.svelte';
 	import Blurb from './Blurb.svelte';
 	import { transition_in } from 'svelte/internal';
 	import { csv } from 'd3';
-	import doPost from '$lib/utils/post'
 
 	export let quizData;
-	export let live 
-	let showBlurb = false;
 
 	function handleBlurb(event) {
-		event ? (showBlurb = true) : '';
+		console.log(event)
+		// event ? (showBlurb = true) : '';
 	}
 
-	onMount( () => {
-		 doPost();
-	});
-
 	// $: console.log(data);
-	let activeQuestion = 0;
+	$: activeQuestion = 0;
 	let quiz = getQuiz();
 
 	beforeUpdate(() => {
@@ -51,10 +45,8 @@
 
 <!-- <div class="flex flex-col"> -->
 
-	{#if showBlurb}
 
-	<Blurb {live} {activeQuestion}/>
-{:else}
+	<!-- <Blurb {isCorrect} {activeQuestion}/> -->
 <div class=" -mt-20 w-1/2 flex flex-row float-right place-center">
 	<!-- <div class=""> -->
 	<!-- <div class=" h-full  px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative"> -->
@@ -83,14 +75,13 @@
 				<!-- {:else} -->
 				<div in:fly={{ x: 100 }} out:fly|local={{ x: -200 }} class="">
 					<!-- <Question on:answer {nextQuestion} {question} /> -->
-					<Question on:click={handleBlurb} {live} {activeQuestion} {question} />
+					<Question on:click={handleBlurb} {activeQuestion} {question} />
 				</div>
 			{/if}
 			<!-- {/if} -->
 		{/each}
 	{/await}
 </div>
-{/if}
 <!-- </div> -->
 <style>
 </style>
