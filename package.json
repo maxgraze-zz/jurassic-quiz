@@ -46,6 +46,7 @@
 		"@jlengstorf/get-share-image": "^0.8.0",
 		"axios": "^0.27.2",
 		"d3": "^7.5.0",
+		"iconify-icon": "^1.0.0",
 		"svelte-meta-tags": "^2.6.0"
 	}
 }

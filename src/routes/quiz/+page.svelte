@@ -4,10 +4,8 @@
 	import Blurb from '$lib/components/Blurb.svelte';
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
-import SocialShare from '$lib/components/socialShares/SocialShare.svelte';
-import Meta from '$lib/components/Meta.svelte'
-import doPost from '$lib/utils/post'
-
+	import Meta from '$lib/components/Meta.svelte';
+	import doPost from '$lib/utils/post';
 
 	let show = 'chooseAdventure';
 	let live = false;
@@ -20,7 +18,6 @@ import doPost from '$lib/utils/post'
 		pink: '#D0A8D7',
 		blackish: '#1F1E1E'
 	};
-
 
 	function handleComponent(event) {
 		show === 'chooseAdventure' ? (show = 'avatars') : (show = 'quiz');
@@ -46,16 +43,15 @@ import doPost from '$lib/utils/post'
 		else quizData = 'data/data.csv';
 	}
 
-
 	let htmlBg;
-	onMount( () => {
+	onMount(() => {
 		//  doPost()
 		htmlBg = document.querySelector('html');
-
 	});
 </script>
+
 <!-- <SocialShare/> -->
-<Meta img="annoying_child"/>
+<Meta img="annoying_child" />
 
 {#if show === 'chooseAdventure'}
 	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} />
@@ -68,7 +64,6 @@ import doPost from '$lib/utils/post'
 
 		<Avatars on:choose={handleComponent} />
 	</div>
-
 {:else}
 	<Quiz {quizData} />
 {/if}

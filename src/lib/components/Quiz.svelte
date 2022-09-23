@@ -4,16 +4,16 @@
 	import Question from './Question.svelte';
 	import { score, user, isAnswered } from './store.js';
 	import Gauge from './Gauge.svelte';
-	import Blurb from './Blurb.svelte';
-	import { transition_in } from 'svelte/internal';
-	import { csv } from 'd3';
+		import { csv } from 'd3';
 
 	export let quizData;
 
-	function handleBlurb(event) {
-		console.log(event)
-		// event ? (showBlurb = true) : '';
-	}
+	
+	function handleChange() {
+		activeQuestion = activeQuestion + 1;
+
+ }
+	
 
 	// $: console.log(data);
 	$: activeQuestion = 0;
@@ -75,7 +75,7 @@
 				<!-- {:else} -->
 				<div in:fly={{ x: 100 }} out:fly|local={{ x: -200 }} class="">
 					<!-- <Question on:answer {nextQuestion} {question} /> -->
-					<Question on:click={handleBlurb} {activeQuestion} {question} />
+					<Question on:nextQuestion={handleChange} {activeQuestion} {question} />
 				</div>
 			{/if}
 			<!-- {/if} -->

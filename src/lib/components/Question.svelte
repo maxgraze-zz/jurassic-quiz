@@ -1,5 +1,4 @@
 <script>
-
 	import { user, score } from './store.js';
 	import Blurb from './Blurb.svelte';
 	import { createEventDispatcher } from 'svelte';
@@ -7,7 +6,7 @@
 	export let activeQuestion;
 	const dispatch = createEventDispatcher();
 	let isCorrect;
- $: currentQuestion = true
+	$: currentQuestion = true;
 
 	let answers = [
 		{
@@ -32,16 +31,15 @@
 	}
 
 	function checkQuestion(answer) {
-		// isAnswered.update(n => n = true) 
-		currentQuestion = false
+		// isAnswered.update(n => n = true)
+		currentQuestion = false;
 		isCorrect = answer.correct;
 		dispatch('answer', {
 			isCorrect
 		});
-	
-		 score.update((val) => val + answer.points)
-			
-			}
+
+		score.update((val) => val + answer.points);
+	}
 </script>
 
 <img class="w-11/12" src="/images/question_illustration.png" alt="caged dinosaur" />
@@ -57,6 +55,5 @@
 	</div>
 </div>
 {#if !currentQuestion}
-<Blurb {isCorrect} {activeQuestion} bind:currentQuestion />
-
+	<Blurb {isCorrect} on:nextQuestion bind:currentQuestion />
 {/if}

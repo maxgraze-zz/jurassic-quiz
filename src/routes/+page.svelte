@@ -1,10 +1,12 @@
 <script>
-	let trexSound 
+	import SEO from '$lib/components/SEO/index.svelte';
+	import website from '$lib/utils/website';
+	let trexSound;
 
 	function playSound() {
 		setTimeout(() => {
-			trexSound.play()
-		},500)	
+			trexSound.play();
+		}, 500);
 	}
 
 	let box;
@@ -33,9 +35,8 @@
 	// });
 </script>
 
-<svelte:head>
-	<title>sveltekit-tailwind</title>
-</svelte:head>
+<SEO />
+
 <!-- <svelte:window bind:scrollY={y} /> -->
 <!-- <html lang="en" class="black-background"> -->
 <div class="container mx-auto box items-center" bind:this={box}>
@@ -47,7 +48,9 @@
 
 		<div class="flex flex-col min-h-[20vh] gap-8 pt-6 justify-center items-center text-center">
 			<!-- <a href={'#'} on:click|preventDefault={() => scrollToElement('#s1')} -->
-			<a href="#s1" on:click={scrollIntoView}> <img src="/images/arrow.png" alt="down arrow" /></a>
+			<a href="#start-quiz" on:click={scrollIntoView}>
+				<img src="/images/arrow.png" alt="down arrow" /></a
+			>
 		</div>
 	</div>
 	<section class="mx-auto pt-28" id="s1">
@@ -68,16 +71,19 @@
 		doloremque perspiciatis dolorem alias esse corporis maxime quaerat! Voluptatum sequi cum culpa
 		nulla accusamus dignissimos! Unde aliquid possimus dicta incidunt officiis perspiciatis ex
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
-		<div class="w-full relative flex pb-10 ">
+		<div id="start-quiz" class=" w-full relative flex pb-10 ">
 			<img class="" src="/images/dino1.png" alt="dino" />
-			<a href="/quiz"><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+			<a href="/quiz"
+				><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button
+				></a
+			>
 		</div>
 		<!-- <button on:click={playSound} > sound!</button> -->
 
-		<audio src="audio/t_rex.mp3" preload=auto bind:this={trexSound} controls>
+		<audio src="audio/t_rex.mp3" preload="auto" bind:this={trexSound} controls>
 			<!-- <audio src=https://www.myinstants.com/media/sounds/m4a1_single-kibblesbob-8540445.mp3 preload=auto bind:this={trexSound} controls> -->
 
-			<track kind="captions"/>
+			<track kind="captions" />
 		</audio>
 	</section>
 	<!-- <button on:click={scrollToTop}> SCROLL TO TOP </button> -->
@@ -91,6 +97,6 @@
 	}
 
 	audio {
-		display: none
+		display: none;
 	}
 </style>
