@@ -5,9 +5,8 @@
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
 	import Meta from '$lib/components/Meta.svelte';
-	import doPost from '$lib/utils/post';
 
-	let show = 'chooseAdventure';
+	let show = 'avatars';
 	let live = false;
 	let quizData = '';
 
@@ -20,9 +19,9 @@
 	};
 
 	function handleComponent(event) {
-		show === 'chooseAdventure' ? (show = 'avatars') : (show = 'quiz');
+		show = 'quiz';
 	}
-
+	console.log(show);
 	function handleMessage(event) {
 		event.detail.isCorrect === true ? (live = true) : (live = false);
 		// showBlurb = true;
@@ -37,9 +36,9 @@
 		)`
 		);
 	}
-	function handleMode(event) {
-		show = 'avatars';
-		if (event.detail.adventure === 'regular') quizData = 'data/data.csv';
+	function handleAvatar(event) {
+		show = 'quiz';
+		if (event.detail.character.name === 'Annoying Child') quizData = 'data/data.csv';
 		else quizData = 'data/data.csv';
 	}
 
@@ -53,16 +52,16 @@
 <!-- <SocialShare/> -->
 <Meta img="annoying_child" />
 
-{#if show === 'chooseAdventure'}
-	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} />
-{:else if show === 'avatars'}
+<!-- {#if show === 'chooseAdventure'}
+	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} /> -->
+{#if show === 'avatars'}
 	<div class="flex flex-col text-center container justify-content align-items ">
 		<!-- <div class="flex flex-col text-center "> -->
 		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl">
 			Pick your <span class="text-purple">player</span>!
 		</h1>
 
-		<Avatars on:choose={handleComponent} />
+		<Avatars on:choose={handleComponent} on:character={handleAvatar} />
 	</div>
 {:else}
 	<Quiz {quizData} />

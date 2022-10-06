@@ -1,6 +1,5 @@
 <script>
 	import hash from 'object-hash';
-	export let article = false;
 	export let author;
 
 	/**
@@ -8,7 +7,6 @@
 	 */
 	export let breadcrumbs;
 	export let entity;
-	export let lastUpdated;
 	export let featuredImage;
 	export let metadescription;
 	export let siteLanguage;
@@ -157,7 +155,6 @@
 		schemaOrgImageObject,
 		schemaOrgWebPage,
 		schemaOrgBreadcrumbList,
-		...(article ? [schemaOrgArticle] : []),
 		schemaOrgPublisher
 	];
 	const schemaOrgObject = {

@@ -1,7 +1,5 @@
 <script>
 	export let article = false;
-	export let datePublished;
-	export let lastUpdated;
 	export let facebookAuthorPage = '';
 	export let facebookPage = '';
 	export let image;
@@ -31,11 +29,5 @@
 		<meta property="og:image:width" content="400" />
 		<meta property="og:image:height" content="400" />
 		<meta property="og:image:alt" content={squareImage.alt} />
-	{/if}
-	{#if article}
-		<meta property="article:publisher" content={facebookPage} />
-		<meta property="article:author" content={facebookAuthorPage} />
-		<meta property="article:published_time" content={datePublished} />
-		<meta property="article:modified_time" content={lastUpdated} />
 	{/if}
 </svelte:head>

@@ -6,6 +6,7 @@
 	import SocialShares from './socials/index.svelte';
 	// import SocialShare from './socialShares/SocialShare.svelte';
 
+	// const context = getShellContext();
 	const dispatch = createEventDispatcher();
 
 	export let isCorrect;

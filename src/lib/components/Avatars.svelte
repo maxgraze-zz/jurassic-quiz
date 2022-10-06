@@ -35,8 +35,10 @@
 
 	const dispatch = createEventDispatcher();
 
-	function dispatchChoice() {
-		dispatch('choose');
+	function dispatchChoice(character) {
+		dispatch('character', {
+			character
+		});
 	}
 
 	function chooseAvatar(character) {
@@ -56,7 +58,7 @@
 		<!-- <a href="/quiz" target="_self"> -->
 		<img
 			on:click={() => chooseAvatar(character)}
-			on:click={dispatchChoice}
+			on:click={() => dispatchChoice(character)}
 			class="self-start  scale-[.8] cursor-pointer w-1/3 h-auto"
 			src={character.img}
 			alt={character.name}

@@ -2,18 +2,15 @@
 	import { fade, blur, fly, slide, scale } from 'svelte/transition';
 	import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte';
 	import Question from './Question.svelte';
-	import { score, user, isAnswered } from './store.js';
+	import { user } from './store.js';
 	import Gauge from './Gauge.svelte';
-		import { csv } from 'd3';
+	import { csv } from 'd3';
 
 	export let quizData;
 
-	
 	function handleChange() {
 		activeQuestion = activeQuestion + 1;
-
- }
-	
+	}
 
 	// $: console.log(data);
 	$: activeQuestion = 0;
@@ -45,8 +42,7 @@
 
 <!-- <div class="flex flex-col"> -->
 
-
-	<!-- <Blurb {isCorrect} {activeQuestion}/> -->
+<!-- <Blurb {isCorrect} {activeQuestion}/> -->
 <div class=" -mt-20 w-1/2 flex flex-row float-right place-center">
 	<!-- <div class=""> -->
 	<!-- <div class=" h-full  px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative"> -->
@@ -75,13 +71,14 @@
 				<!-- {:else} -->
 				<div in:fly={{ x: 100 }} out:fly|local={{ x: -200 }} class="">
 					<!-- <Question on:answer {nextQuestion} {question} /> -->
-					<Question on:nextQuestion={handleChange} {activeQuestion} {question} />
+					<Question on:nextQuestion={handleChange} {question} />
 				</div>
 			{/if}
 			<!-- {/if} -->
 		{/each}
 	{/await}
 </div>
+
 <!-- </div> -->
 <style>
 </style>

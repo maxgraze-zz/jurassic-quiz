@@ -1,5 +1,5 @@
 <script>
-	import SEO from '$lib/components/SEO/index.svelte';
+	// import SEO from '$lib/components/SEO/index.svelte';
 	import website from '$lib/utils/website';
 	let trexSound;
 
@@ -35,13 +35,11 @@
 	// });
 </script>
 
-<SEO />
-
 <!-- <svelte:window bind:scrollY={y} /> -->
 <!-- <html lang="en" class="black-background"> -->
 <div class="container mx-auto box items-center" bind:this={box}>
-	<div class="flex flex-col min-h-screen text-center ">
-		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl ">
+	<div class="flex flex-col mt-10 md:mt-0 min-h-screen text-center ">
+		<h1 class="basis-1/3 md:text-h1 font-janguky md:text-6xl xl:text-7xl ">
 			How would <br />you <span class="text-purple">die</span> in <br />Jurassic movies?
 		</h1>
 		<p class="text-lg pt-6 uppercase">A data game by Max Graze & Datacitron</p>
@@ -73,10 +71,11 @@
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
 		<div id="start-quiz" class=" w-full relative flex pb-10 ">
 			<img class="" src="/images/dino1.png" alt="dino" />
-			<a href="/quiz"
+			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+			<!-- <a href="/quiz"
 				><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button
 				></a
-			>
+			> -->
 		</div>
 		<!-- <button on:click={playSound} > sound!</button> -->
 

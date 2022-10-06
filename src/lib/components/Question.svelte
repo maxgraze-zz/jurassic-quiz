@@ -3,7 +3,7 @@
 	import Blurb from './Blurb.svelte';
 	import { createEventDispatcher } from 'svelte';
 	export let question;
-	export let activeQuestion;
+
 	const dispatch = createEventDispatcher();
 	let isCorrect;
 	$: currentQuestion = true;
@@ -37,7 +37,6 @@
 		dispatch('answer', {
 			isCorrect
 		});
-
 		score.update((val) => val + answer.points);
 	}
 </script>
