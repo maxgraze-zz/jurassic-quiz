@@ -44,7 +44,7 @@
 	}
 
 	.btn2 {
-		@apply text-center cursor-pointer w-1/3 h-20 inline-block font-bold px-6 py-2 border-4 border-khaki text-khaki font-body text-xl rounded-[130px];
+		@apply hover:scale-105 text-center cursor-pointer h-20 inline-block font-bold px-6 py-2 border-4 border-khaki text-khaki font-body text-xl rounded-[130px];
 	}
 	.gradient {
 		@apply bg-gradient-to-r from-khaki via-pink to-purple;

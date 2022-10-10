@@ -1,7 +1,6 @@
 <script>
-	import Avatars from '$lib/components/Avatars.svelte';
 	import Gauge from './Gauge.svelte';
-	import { score, user } from './store';
+	import { component, score, user } from './store';
 	import { createEventDispatcher } from 'svelte';
 	import SocialShares from './socials/index.svelte';
 	// import SocialShare from './socialShares/SocialShare.svelte';
@@ -16,8 +15,6 @@
 
 	function nextQuestion() {
 		dispatch('nextQuestion');
-		// activeQuestion = activeQuestion + 1;
-		// currentQuestion = true
 	}
 
 	let blurb = {
@@ -48,6 +45,7 @@
 	function resetQuiz() {
 		score.set(0);
 		currentQuestion = true;
+		component.update((val) => (val = 'avatar'));
 	}
 
 	// function continueQuiz(){
@@ -61,8 +59,8 @@
 	// }
 </script>
 
-<html class="blurb" lang="en">
-	<body>
+<div class="purple-black">
+	<div class="black-cream">
 		<div class="grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
@@ -81,7 +79,7 @@
 						</p>
 						<p class="font-body mx-24 font-bold text-3xl">
 							You {blurb.wl}
-							<span class="text-purple">{$score} </span>Darwin points.
+							<span class="text-purple">{$score <= 0 ? $score * -1 : $score} </span>Darwin points.
 						</p>
 					</div>
 					<div class="flex justify-center pt-6">
@@ -106,21 +104,27 @@
 						dino to another location Text about the data and the number of accident while moving one
 						dino to another location. Text about the data and the number of accident while
 					</p>
-
-					<button class="btn2" on:click={nextQuestion}>Next Question</button>
-
-					<a href="/"><button on:click={resetQuiz}>Start New Quiz</button> </a>
-					<SocialShares />
+					<div class="flex gap-x-10 justify-center items-center mt-10">
+						{#if isCorrect}
+							<button class="btn2" on:click={nextQuestion}>Next Question</button>
+						{:else}
+							<a href="/quiz"><button class="btn2" on:click={resetQuiz}>Fresh Start</button> </a>
+							<SocialShares />
+						{/if}
+					</div>
 				</div>
 			</div>
 		</section>
-	</body>
-</html>
+	</div>
+</div>
 
 <style>
-	html {
-		overflow: hidden;
-		/* background-color: theme('colors.purple'); */
+	.purple-black {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px; /* background-color: theme('colors.purple'); */
 		background: linear-gradient(
 			to right,
 			theme('colors.purple') 0%,
@@ -129,12 +133,14 @@
 			theme('colors.blackish') 100%
 		);
 	}
-	body {
+	.black-cream {
 		position: absolute;
+		overflow-y: auto;
 		top: 0px;
 		right: 0px;
 		bottom: 0px;
 		left: 0px;
+		border-radius: 10rem;
 		background: linear-gradient(
 			to right,
 			theme('colors.blackish') 0%,

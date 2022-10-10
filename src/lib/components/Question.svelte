@@ -42,7 +42,7 @@
 </script>
 
 <img class="w-11/12" src="/images/question_illustration.png" alt="caged dinosaur" />
-<div class="mx-10">
+<div class="px-10 mx-auto w-2/3">
 	<p class="font-bold text-xl font-poppins mx-4 pr-10">{@html question.question}</p>
 
 	<div class="flex gap-x-4 pt-8 w-11/12">

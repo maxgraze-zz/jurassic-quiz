@@ -51,12 +51,7 @@
 	}
 </script>
 
-<button on:click={handleClick}
-	><span class="screen-reader-text">Share on Twitter</span><TwitterIcon
-		colour={TWITTER_BLUE}
-		width={48}
-	/></button
->
+<button on:click={handleClick}><TwitterIcon colour={TWITTER_BLUE} width={48} /></button>
 
 <style>
 	button {

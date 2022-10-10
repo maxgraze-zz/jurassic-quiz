@@ -28,8 +28,9 @@
 
 <!-- <aside class="container"> -->
 <div class="wrapper">
-	Share: <div class="buttons">
-		<Twitter {url} {title} /><Facebook {url} />
+	<div class="buttons">
+		<Twitter {url} {title} />
+		<!-- <Facebook {url} /> -->
 	</div>
 </div>
 
