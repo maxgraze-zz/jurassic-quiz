@@ -1,20 +1,27 @@
 <script>
-	import Avatars from '$lib/components/Avatars.svelte';
 	import Gauge from './Gauge.svelte';
-	import { score, user } from './store';
+	import { component, score, user } from './store';
 	import { createEventDispatcher } from 'svelte';
+	import SEO from './SEO/index.svelte';
+	import website from '$lib/utils/website';
+	import TwitterShare from './socials/TwitterShare.svelte';
+	import Twitter from './socials/Twitter.svelte';
+	// import SocialShare from './socialShares/SocialShare.svelte';
 
-const dispatch = createEventDispatcher();
+	let twitterImageSrc = '/images/die_illustration.png';
+	let featuredImageSrc = '/images/die_illustration.png';
+	let ogImageSrc = '/images/die_illustration.png';
+	let ogSquareImageSrc = '/images/die_illustration.png';
+	// const context = getShellContext();
+	const dispatch = createEventDispatcher();
 
-	export let live;
+	export let isCorrect;
 	// export let activeQuestion;
-	export let activeQuestion;
-	// export let showBlurb
+	export let currentQuestion;
+	let showSocialShare = false;
 
-	// console.log(showBlurb)
-	
 	function nextQuestion() {
-		activeQuestion = activeQuestion + 1;
+		dispatch('nextQuestion');
 	}
 
 	let blurb = {
@@ -24,7 +31,7 @@ const dispatch = createEventDispatcher();
 		src: ''
 	};
 
-	if (live) {
+	if (isCorrect) {
 		blurb.title = 'you live';
 		blurb.subtitle = '(for now)';
 		blurb.wl = 'win';
@@ -34,6 +41,7 @@ const dispatch = createEventDispatcher();
 		blurb.subtitle = '(in agonizing pain)';
 		blurb.wl = 'lose';
 		blurb.src = '/images/die_illustration.png';
+		showSocialShare = true;
 	}
 
 	function scrollIntoView({ target }) {
@@ -43,23 +51,72 @@ const dispatch = createEventDispatcher();
 	}
 	function resetQuiz() {
 		score.set(0);
+		currentQuestion = true;
+		component.update((val) => (val = 'avatar'));
 	}
 
-	
 	// function continueQuiz(){
 	// 	showBlurb = false
 	// 	dispatch('continueQuiz', {
-	// 		showBlurb 
+	// 		showBlurb
 	// 	});
 	// }
 	// 	activeQuestion = 0;
 	// 	quiz = getQuiz();
 	// }
+	const { author, siteUrl } = website;
+	let title = 'Home';
+	const breadcrumbs = [
+		{
+			name: 'Home',
+			slug: ''
+		}
+	];
+	let metadescription = 'Jurassic Park Survival Quize';
+	const featuredImageAlt = 'picture of a dinosaur';
+	const featuredImage = {
+		url: featuredImageSrc,
+		alt: featuredImageAlt,
+		width: 672,
+		height: 448,
+		caption: 'Home page'
+	};
+	const ogImage = {
+		url: ogImageSrc,
+		alt: featuredImageAlt
+	};
+	const ogSquareImage = {
+		url: ogSquareImageSrc,
+		alt: featuredImageAlt
+	};
+
+	const twitterImage = {
+		url: twitterImageSrc,
+		alt: featuredImageAlt
+	};
+	const entityMeta = {
+		url: `${siteUrl}/`,
+		faviconWidth: 512,
+		faviconHeight: 512,
+		caption: author
+	};
+	const seoProps = {
+		title,
+		slug: '',
+		entityMeta,
+		breadcrumbs,
+		metadescription,
+		featuredImage,
+		ogImage,
+		ogSquareImage,
+		twitterImage
+	};
 </script>
 
+<SEO {...seoProps} />
 
-<html class="blurb" lang="en">
-	<body>
+<div class="purple-black">
+	<div class="black-cream">
 		<div class="grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
@@ -69,53 +126,69 @@ const dispatch = createEventDispatcher();
 					<img src={$user.av} alt={$user.character} class="px-8 " />
 					<Gauge />
 				</div>
-				<div class="text-center space-y-8">
-					<p class="font-janguky algin-center text-8xl mt-32">{blurb.title}</p>
+				<div class="text-center space-y-4">
+					<p class="font-janguky algin-center text-8xl mt-24">{blurb.title}</p>
 					<p class="font-body font-bold text-3xl">{blurb.subtitle}</p>
-					<p class="font-body mx-24 text-lg">
-						Excellent move, though you probably won’be the employee of the month.
-					</p>
-					<p class="font-body mx-24 font-bold text-3xl">
-						You {blurb.wl}
-						{$score} points of Darwin’s score.
-					</p>
-<div class="flex justify-center">
-					<a href="#s1" on:click={scrollIntoView}>
-						<img src="/images/arrow.png" alt="down arrow" /></a
-					>
+					<div class="space-y-6">
+						<p class="font-body mx-24 text-lg">
+							Excellent move, though you probably won’be the employee of the month.
+						</p>
+						<p class="font-body mx-24 font-bold text-3xl">
+							You {blurb.wl}
+							<span class="text-purple">{$score <= 0 ? $score * -1 : $score} </span>Darwin points.
+						</p>
+					</div>
+					<div class="flex justify-center pt-6">
+						<a href="#s1" on:click={scrollIntoView}>
+							<img src="/images/arrow.png" alt="down arrow" /></a
+						>
+					</div>
 				</div>
-				</div>
-		</div>
+			</div>
 		</div>
 		<section class="grid grid-cols-2 grid-rows-1">
-			<div class="align-center mt-20 justify-center flex">
+			<div class="align-center mt-0 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
 			</div>
 			<div class="align-center mt-20 justify-center flex flex-col">
-				<div class="text-justify px-28" id='s1'>
-						<p>	Text about the data and the number of accident while moving one dino to another
-							location. Text about the data and the number of accident while moving one dino to
-							another location. Text about the data and the number of accident while moving one dino
-							to another location. Text about the data and the number of accident while moving one
-							dino to another location Text about the data and the number of accident while moving one
-							dino to another location. Text about the data and the number of accident while</p>		
-			
-		<div>
-			{#if live}
-			<button class="btn2" on:click={nextQuestion}>Next Question</button> 
-
-			{:else}
-			<button on:click={resetQuiz}>Start New Quiz</button> 
-{/if}
-		</div>
-					</section>
-	</body>
-</html>
+				<div class="text-justify px-28" id="s1">
+					<p>
+						Text about the data and the number of accident while moving one dino to another
+						location. Text about the data and the number of accident while moving one dino to
+						another location. Text about the data and the number of accident while moving one dino
+						to another location. Text about the data and the number of accident while moving one
+						dino to another location Text about the data and the number of accident while moving one
+						dino to another location. Text about the data and the number of accident while
+					</p>
+					<div class="flex gap-x-10 justify-center items-center mt-10">
+						{#if isCorrect}
+							<button class="btn2" on:click={nextQuestion}>Next Question</button>
+						{:else}
+							<a href="/quiz"><button class="btn2" on:click={resetQuiz}>Fresh Start</button> </a>
+							<Twitter {siteUrl} {title} />
+							<TwitterShare
+								{siteUrl}
+								via1="@maxgraze"
+								via2="@datacitron"
+								text={metadescription}
+								hashtags="#jurassicpark"
+								related="@jurassic"
+							/>
+						{/if}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
 
 <style>
-	html {
-		overflow: hidden;
-		/* background-color: theme('colors.purple'); */
+	.purple-black {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px; /* background-color: theme('colors.purple'); */
 		background: linear-gradient(
 			to right,
 			theme('colors.purple') 0%,
@@ -124,12 +197,14 @@ const dispatch = createEventDispatcher();
 			theme('colors.blackish') 100%
 		);
 	}
-	body {
+	.black-cream {
 		position: absolute;
+		overflow-y: auto;
 		top: 0px;
 		right: 0px;
 		bottom: 0px;
 		left: 0px;
+		border-radius: 10rem;
 		background: linear-gradient(
 			to right,
 			theme('colors.blackish') 0%,

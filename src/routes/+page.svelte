@@ -1,6 +1,18 @@
 <script>
-	import Avatars from '$lib/components/Avatars.svelte';
-	import Quiz from '$lib/components/Quiz.svelte';
+	import Arrow from '$lib/components/images/arrow.svelte';
+	import SEO from '$lib/components/SEO/index.svelte';
+	import website from '$lib/utils/website';
+
+	let trexSound;
+	let twitterImageSrc = '/images/dino1.png';
+	let featuredImageSrc = '/images/dino1.png';
+	let ogSquareImageSrc = '/images/dino1.png';
+	let ogImageSrc = '/images/dino1.png';
+	function playSound() {
+		setTimeout(() => {
+			trexSound.play();
+		}, 500);
+	}
 
 	let box;
 	function scrollToTop() {
@@ -23,26 +35,70 @@
 		el.scrollIntoView();
 	}
 
-	// let data = csv('$lib/components/data/data.csv').then((d) => {
-	// 	console.log(d);
-	// });
+	const { author, siteUrl } = website;
+	let title = 'Home';
+	const breadcrumbs = [
+		{
+			name: 'Home',
+			slug: ''
+		}
+	];
+	let metadescription = 'Jurassic Park Survival Quize';
+	const featuredImageAlt = 'picture of a dinosaur';
+	const featuredImage = {
+		url: featuredImageSrc,
+		alt: featuredImageAlt,
+		width: 672,
+		height: 448,
+		caption: 'Home page'
+	};
+	const ogImage = {
+		url: ogImageSrc,
+		alt: featuredImageAlt
+	};
+	const ogSquareImage = {
+		url: ogSquareImageSrc,
+		alt: featuredImageAlt
+	};
+
+	const twitterImage = {
+		url: twitterImageSrc,
+		alt: featuredImageAlt
+	};
+	const entityMeta = {
+		url: `${siteUrl}/`,
+		faviconWidth: 512,
+		faviconHeight: 512,
+		caption: author
+	};
+	const seoProps = {
+		title,
+		slug: '',
+		entityMeta,
+		breadcrumbs,
+		metadescription,
+		featuredImage,
+		ogImage,
+		ogSquareImage,
+		twitterImage
+	};
 </script>
 
-<svelte:head>
-	<title>sveltekit-tailwind</title>
-</svelte:head>
+<SEO {...seoProps} />
 <!-- <svelte:window bind:scrollY={y} /> -->
 <!-- <html lang="en" class="black-background"> -->
 <div class="container mx-auto box items-center" bind:this={box}>
-	<div class="flex flex-col min-h-screen text-center ">
-		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl ">
+	<div class="flex flex-col mt-10 md:mt-0 min-h-screen text-center ">
+		<h1 class="basis-1/3 md:text-h1 font-janguky md:text-6xl xl:text-7xl ">
 			How would <br />you <span class="text-purple">die</span> in <br />Jurassic movies?
 		</h1>
 		<p class="text-lg pt-6 uppercase">A data game by Max Graze & Datacitron</p>
 
 		<div class="flex flex-col min-h-[20vh] gap-8 pt-6 justify-center items-center text-center">
 			<!-- <a href={'#'} on:click|preventDefault={() => scrollToElement('#s1')} -->
-			<a href="#s1" on:click={scrollIntoView}> <img src="/images/arrow.png" alt="down arrow" /></a>
+			<a href="#start-quiz" on:click={scrollIntoView}>
+				<img src="/images/arrow.png" alt="down arrow" /></a
+			>
 		</div>
 	</div>
 	<section class="mx-auto pt-28" id="s1">
@@ -63,10 +119,21 @@
 		doloremque perspiciatis dolorem alias esse corporis maxime quaerat! Voluptatum sequi cum culpa
 		nulla accusamus dignissimos! Unde aliquid possimus dicta incidunt officiis perspiciatis ex
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
-		<div class="w-full relative flex ">
+		<div id="start-quiz" class=" w-full relative flex pb-10 ">
 			<img class="" src="/images/dino1.png" alt="dino" />
 			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
+			<!-- <a href="/quiz"
+				><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button
+				></a
+			> -->
 		</div>
+		<!-- <button on:click={playSound} > sound!</button> -->
+
+		<audio src="audio/t_rex.mp3" preload="auto" bind:this={trexSound} controls>
+			<!-- <audio src=https://www.myinstants.com/media/sounds/m4a1_single-kibblesbob-8540445.mp3 preload=auto bind:this={trexSound} controls> -->
+
+			<track kind="captions" />
+		</audio>
 	</section>
 	<!-- <button on:click={scrollToTop}> SCROLL TO TOP </button> -->
 </div>
@@ -76,5 +143,9 @@
 <style>
 	section {
 		min-height: 100vh;
+	}
+
+	audio {
+		display: none;
 	}
 </style>

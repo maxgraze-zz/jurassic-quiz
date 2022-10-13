@@ -15,7 +15,7 @@ module.exports = {
 			},
 			fontFamily: {
 				janguky: ['janguky', 'regular'],
-				body: ['Poppins']
+				body: ['Figtree']
 			},
 			fontSize: {
 				h1: '110px',

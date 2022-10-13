@@ -18,43 +18,42 @@
 		);
 	}
 
-	html,
 	.normal-html {
 		@apply overflow-hidden;
-		@apply bg-[image:var(--tunnel)] 
-
+		@apply  bg-blackish
 		/* bg-blackish; */;
 	}
-
-	body,
-	.normal-body {
-		@apply overflow-y-auto h-full max-h-full bg-cream rounded-[16rem] scroll-smooth;
+	.blurb-html {
+		@apply bg-gradient-to-r from-khaki via-pink to-purple;
 	}
-}
-
-@layer base {
+	.normal-body {
+		@apply overflow-y-auto max-h-full h-screen bg-cream  rounded-[6rem] md:rounded-[10rem] scroll-smooth;
+	}
 	html {
 		@apply h-full;
-		font-family: Poppins, system-ui, sans-serif;
+		/* font-family: Figtree, system-ui, sans-serif; */
 	}
 
 	.layout {
 		@apply max-w-[1000px] mx-auto;
 	}
 
-	.black-background {
-	}
 
 	.btn {
 		@apply cursor-pointer w-2/3 h-20 inline-block px-6 py-2 first:bg-purple last:bg-khaki text-cream font-janguky text-3xl rounded-[130px]  hover:gradient focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
 	}
 
 	.btn2 {
-		@apply text-center cursor-pointer w-1/3 h-20 inline-block font-bold px-6 py-2 border-4 border-khaki text-khaki font-body text-xl rounded-[130px];
+		@apply hover:scale-105 text-center cursor-pointer h-20 inline-block font-bold px-6 py-2 border-4 border-khaki text-khaki font-body text-xl rounded-[130px];
 	}
 	.gradient {
 		@apply bg-gradient-to-r from-khaki via-pink to-purple;
 	}
+
+}
+
+@layer base {
+
 	@font-face {
 		font-family: 'janguky';
 		font-style: regular;
