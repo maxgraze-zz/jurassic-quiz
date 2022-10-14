@@ -159,6 +159,6 @@
 	`;
 </script>
 
-<svelte:head>
+<sveltekit:head>
 	{@html jsonLdScript}
-</svelte:head>
+</sveltekit:head>

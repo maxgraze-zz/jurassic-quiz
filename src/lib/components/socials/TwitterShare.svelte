@@ -5,6 +5,9 @@
 	export let via1;
 	export let via2;
 	export let related;
+	// export let img;
+
+	let img = 'images/annoying_child.png';
 
 	$: query = [
 		text && `text=${encodeURIComponent(text)}`,
@@ -12,7 +15,8 @@
 		hashtags && `hashtags=${hashtags}`,
 		via1 && `via1=${encodeURIComponent(via1)}`,
 		via2 && `via2=${encodeURIComponent(via2)}`,
-		related && `related=${encodeURIComponent(related)}`
+		related && `related=${encodeURIComponent(related)}`,
+		img && `related=${encodeURIComponent(related)}`
 	]
 		.filter(Boolean)
 		.join('&');

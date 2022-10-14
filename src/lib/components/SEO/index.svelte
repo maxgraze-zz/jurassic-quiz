@@ -56,7 +56,7 @@
 	};
 
 	const pageTitle = `${siteTitle} | ${title}`;
-	const url = `${siteUrl}/${slug}`;
+	const url = `${siteUrl}`;
 	const openGraphProps = {
 		image: ogImage,
 		squareImage: ogSquareImage,
@@ -88,11 +88,9 @@
 		image: twitterImage,
 		timeToRead
 	};
-
-	console.log(twitterProps);
 </script>
 
-<svelte:head>
+<sveltekit:head>
 	<title>{pageTitle}</title>
 	<meta name="description" content={metadescription} />
 	<meta
@@ -100,7 +98,7 @@
 		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 	/>
 	<link rel="canonical" href={url} />
-</svelte:head>
+</sveltekit:head>
 <Twitter {...twitterProps} />
 <OpenGraph {...openGraphProps} />
 <!-- <SchemaOrg {...schemaOrgProps} /> -->

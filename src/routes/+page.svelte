@@ -2,12 +2,9 @@
 	import Arrow from '$lib/components/images/arrow.svelte';
 	import SEO from '$lib/components/SEO/index.svelte';
 	import website from '$lib/utils/website';
-
+	import { MetaTags } from 'svelte-meta-tags';
 	let trexSound;
-	let twitterImageSrc = '/images/dino1.png';
-	let featuredImageSrc = '/images/dino1.png';
-	let ogSquareImageSrc = '/images/dino1.png';
-	let ogImageSrc = '/images/dino1.png';
+
 	function playSound() {
 		setTimeout(() => {
 			trexSound.play();
@@ -35,14 +32,21 @@
 		el.scrollIntoView();
 	}
 
+	let twitterImageSrc = '/images/dino1.png';
+	let featuredImageSrc = '/images/dino1.png';
+	let ogSquareImageSrc = '/images/dino1.png';
+	let ogImageSrc = '/images/dino1.png';
+
 	const { author, siteUrl } = website;
-	let title = 'Home';
+
+	let title = 'Would you survive Jurassic Park?';
 	const breadcrumbs = [
 		{
 			name: 'Home',
 			slug: ''
 		}
 	];
+
 	let metadescription = 'Jurassic Park Survival Quize';
 	const featuredImageAlt = 'picture of a dinosaur';
 	const featuredImage = {
@@ -84,7 +88,53 @@
 	};
 </script>
 
-<SEO {...seoProps} />
+<!-- <MetaTags
+	title="Using More of Config"
+	titleTemplate="%s | Svelte Meta Tags"
+	description="Would you survive Jurassic Park?"
+	canonical={siteUrl}
+	openGraph={{
+		url: siteUrl,
+		title: 'Open Graph Title',
+		description: 'Open Graph Description',
+		images: [
+			{
+				url: ogImageSrc,
+				width: 800,
+				height: 600,
+				alt: 'Og Image Alt'
+			},
+			{
+				url: ogImageSrc,
+				width: 900,
+				height: 800,
+				alt: 'Og Image Alt Second'
+			},
+			{ url: ogImageSrc }
+		],
+		site_name: 'Jurassic Park Survival QuiZ'
+	}}
+	twitter={{
+		handle: '@maxgraze',
+		site: '@datacitron',
+		cardType: 'summary_large_image',
+		title: 'Using More of Config',
+		description: 'This example uses more of the available config options.',
+		image: ogImageSrc,
+		imageAlt: 'Twitter image alt'
+	}}
+	facebook={{
+		appId: '1234567890'
+	}}
+/> -->
+<a
+	href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+	class="twitter-share-button"
+	data-via="max_graze"
+	data-related="datacitron"
+	data-show-count="false">Tweet</a
+>
+<!-- <SEO {...seoProps} /> -->
 <!-- <svelte:window bind:scrollY={y} /> -->
 <!-- <html lang="en" class="black-background"> -->
 <div class="container mx-auto box items-center" bind:this={box}>

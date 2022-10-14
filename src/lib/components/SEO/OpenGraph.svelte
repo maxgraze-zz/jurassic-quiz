@@ -8,7 +8,7 @@
 	export let url;
 </script>
 
-<svelte:head>
+<sveltekit:head>
 	<meta property="og:site_name" content={siteTitle} />
 	<meta property="og:locale" content={ogLanguage} />
 	<meta property="og:url" content={url} />
@@ -27,4 +27,4 @@
 		<meta property="og:image:height" content="400" />
 		<meta property="og:image:alt" content={squareImage.alt} />
 	{/if}
-</svelte:head>
+</sveltekit:head>

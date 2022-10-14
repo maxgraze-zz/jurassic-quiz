@@ -8,6 +8,7 @@
 	export let siteUrl;
 	export let via = ''; // include '@' e.g. '@askRodney'
 
+	let img = 'images/annoying_child.png';
 	const TWITTER_BLUE = '#00aced';
 
 	const baseUrl = 'https://twitter.com/share';

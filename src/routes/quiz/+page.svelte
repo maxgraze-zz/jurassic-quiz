@@ -5,6 +5,8 @@
 	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
 	import doPost from '$lib/utils/post';
+	import website from '$lib/utils/website';
+	import SEO from '$lib/components/SEO/index.svelte';
 
 	// const data = {
 	// 	id: 1,
@@ -42,13 +44,68 @@
 		//  doPost()
 		htmlBg = document.querySelector('html');
 	});
+	// let twitterImageSrc = '/images/dino1.png';
+	// let featuredImageSrc = '/images/dino1.png';
+	// let ogSquareImageSrc = '/images/dino1.png';
+	// let ogImageSrc = '/images/dino1.png';
+
+	// const { author, siteUrl } = website;
+	// let title = 'Home';
+	// const breadcrumbs = [
+	// 	{
+	// 		name: 'Home',
+	// 		slug: ''
+	// 	}
+	// ];
+
+	// let metadescription = 'Jurassic Park Survival Quize';
+	// const featuredImageAlt = 'picture of a dinosaur';
+	// const featuredImage = {
+	// 	url: featuredImageSrc,
+	// 	alt: featuredImageAlt,
+	// 	width: 672,
+	// 	height: 448,
+	// 	caption: 'Home page'
+	// };
+	// const ogImage = {
+	// 	url: ogImageSrc,
+	// 	alt: featuredImageAlt
+	// };
+	// const ogSquareImage = {
+	// 	url: ogSquareImageSrc,
+	// 	alt: featuredImageAlt
+	// };
+
+	// const twitterImage = {
+	// 	url: twitterImageSrc,
+	// 	alt: featuredImageAlt
+	// };
+	// const entityMeta = {
+	// 	url: `${siteUrl}/`,
+	// 	faviconWidth: 512,
+	// 	faviconHeight: 512,
+	// 	caption: author
+	// };
+	// const seoProps = {
+	// 	title,
+	// 	slug: '',
+	// 	entityMeta,
+	// 	breadcrumbs,
+	// 	metadescription,
+	// 	featuredImage,
+	// 	ogImage,
+	// 	ogSquareImage,
+	// 	twitterImage
+	// };
 </script>
 
-<!-- <SocialShare/> -->
-<Meta img="annoying_child" />
+<!-- <SEO {...seoProps} /> -->
 
 <!-- <SocialShare/> -->
-<Meta img="annoying_child" />
+<!-- <Meta img="annoying_child" /> -->
+
+<!-- <SocialShare/> -->
+<!-- <Meta img="annoying_child" /> -->
 
 <!-- {#if show === 'chooseAdventure'}
 	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} /> -->

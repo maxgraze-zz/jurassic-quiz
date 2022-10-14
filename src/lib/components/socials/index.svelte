@@ -24,7 +24,7 @@
 			webShareAPISupported = false;
 		}
 	};
-	const url = `${siteUrl}/${slug}`;
+	const url = `${siteUrl}`;
 </script>
 
 <!-- <aside class="container"> -->
