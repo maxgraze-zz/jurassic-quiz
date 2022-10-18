@@ -2,7 +2,6 @@
 	import Quiz from '$lib/components/Quiz.svelte';
 	import Avatars from '$lib/components/Avatars.svelte';
 	import Blurb from '$lib/components/Blurb.svelte';
-	import ChooseAdventure from '$lib/components/ChooseAdventure.svelte';
 	import { onMount } from 'svelte';
 	import doPost from '$lib/utils/post';
 	import website from '$lib/utils/website';
@@ -39,11 +38,6 @@
 		else quizData = 'data/data.csv';
 	}
 
-	let htmlBg;
-	onMount(() => {
-		//  doPost()
-		htmlBg = document.querySelector('html');
-	});
 	// let twitterImageSrc = '/images/dino1.png';
 	// let featuredImageSrc = '/images/dino1.png';
 	// let ogSquareImageSrc = '/images/dino1.png';
@@ -58,7 +52,7 @@
 	// 	}
 	// ];
 
-	// let metadescription = 'Jurassic Park Survival Quize';
+	// let metadescription = 'Jurassic Park Survival Quiz';
 	// const featuredImageAlt = 'picture of a dinosaur';
 	// const featuredImage = {
 	// 	url: featuredImageSrc,
@@ -109,15 +103,15 @@
 
 <!-- {#if show === 'chooseAdventure'}
 	<ChooseAdventure on:click={handleComponent} on:mode={handleMode} /> -->
-{#if $component === 'avatar'}
-	<div class="mx-auto text-center container ">
+<div class="mx-auto text-center container mt-10 md:mt-20 ">
+	{#if $component === 'avatar'}
 		<!-- <div class="flex flex-col text-center "> -->
-		<h1 class="basis-1/3 text-h1 font-janguky md:text-6xl xl:text-7xl">
+		<h1 class="basis-1/3 text-4xl md:text-h1 font-janguky md:text-6xl xl:text-7xl">
 			Pick your <span class="text-purple">player</span>!
 		</h1>
 
 		<Avatars on:character={handleAvatar} />
-	</div>
-{:else}
-	<Quiz {quizData} />
-{/if}
+	{:else}
+		<Quiz {quizData} />
+	{/if}
+</div>

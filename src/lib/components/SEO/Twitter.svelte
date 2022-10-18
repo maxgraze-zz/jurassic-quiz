@@ -10,7 +10,7 @@
 	 */
 </script>
 
-<sveltekit:head>
+<svelte:head>
 	<meta name="twitter:card" content="summary_large_image" />
 	{#if image}
 		<meta name="twitter:image" content={image.url} />
@@ -19,6 +19,6 @@
 		<meta name="twitter:creator" content={`@${twitterUsername}`} />
 		<meta name="twitter:site" content={`@${twitterUsername}`} />
 	{/if}
-	<meta name="twitter:label1" content="Written by" />
-	<meta name="twitter:data1" content={author} />
-</sveltekit:head>
+	<meta name="twitter:label" content="Written by" />
+	<meta name="twitter:data" content={author} />
+</svelte:head>

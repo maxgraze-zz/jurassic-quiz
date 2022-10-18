@@ -6,13 +6,15 @@ export const component = writable('avatar');
 export const user = writable({
 	score: 0,
 	character: '',
-	av: ''
+	av: '',
+	quiz: 'data/data.csv'
 });
 
 export function reset() {
 	user.set({
 		score: 0,
 		character: '',
-		av: ''
+		av: '',
+		quiz: ''
 	});
 }

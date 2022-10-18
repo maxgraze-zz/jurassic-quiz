@@ -6,10 +6,14 @@
 	import website from '$lib/utils/website';
 	import TwitterShare from './socials/TwitterShare.svelte';
 	import Twitter from './socials/Twitter.svelte';
-	// import SocialShare from './socialShares/SocialShare.svelte';
+	import TwitterIcon from '$lib/components/icons/TwitterIcon.svelte';
+	import Button from '$lib/components/Button.svelte';
 
-	let twitterImageSrc = '/images/die_illustration.png';
-	let featuredImageSrc = '/images/die_illustration.png';
+	// import SocialShare from './socialShares/SocialShare.svelte';
+	const { author, siteUrl } = website;
+
+	let twitterImageSrc = `${siteUrl}/images/dino1.png`;
+	let featuredImageSrc = `${siteUrl}/images/die_illustration.png`;
 	let ogImageSrc = '/images/die_illustration.png';
 	let ogSquareImageSrc = '/images/die_illustration.png';
 	// const context = getShellContext();
@@ -19,7 +23,10 @@
 	// export let activeQuestion;
 	export let currentQuestion;
 	let showSocialShare = false;
-
+	let restartText = 'Start again from the beginning';
+	let dinoDashboardText = 'See the dino dashboard';
+	let deathDashboardText = 'See the death dashboard';
+	let twitterText = 'Share my death on twitter';
 	function nextQuestion() {
 		dispatch('nextQuestion');
 	}
@@ -64,7 +71,6 @@
 	// 	activeQuestion = 0;
 	// 	quiz = getQuiz();
 	// }
-	const { author, siteUrl } = website;
 	let title = 'Home';
 	const breadcrumbs = [
 		{
@@ -72,7 +78,7 @@
 			slug: ''
 		}
 	];
-	let metadescription = 'Jurassic Park Survival Quize';
+	let metadescription = 'Jurassic Park Survival ';
 	const featuredImageAlt = 'picture of a dinosaur';
 	const featuredImage = {
 		url: featuredImageSrc,
@@ -116,7 +122,7 @@
 <SEO {...seoProps} />
 
 <div class="purple-black">
-	<div class="black-cream">
+	<div class="black-cream br">
 		<div class="grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
@@ -146,7 +152,7 @@
 				</div>
 			</div>
 		</div>
-		<section class="grid grid-cols-2 grid-rows-1">
+		<section class=" grid grid-cols-2 grid-rows-1">
 			<div class="align-center mt-0 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
 			</div>
@@ -162,9 +168,38 @@
 					</p>
 					<div class="flex gap-x-10 justify-center items-center mt-10">
 						{#if isCorrect}
-							<button class="btn2" on:click={nextQuestion}>Next Question</button>
+							<button class="btn" on:click={nextQuestion}>Next Question</button>
 						{:else}
-							<a href="/quiz"><button class="btn2" on:click={resetQuiz}>Fresh Start</button> </a>
+							<div class="grid-cols-2 gap-5 grid w-96">
+								<a
+									href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+									class="twitter-share-button"
+									data-via="max_graze"
+									data-related="datacitron"
+									data-show-count="false"
+								>
+									<Button type={'twitter'} text={twitterText} />
+								</a>
+								<TwitterShare
+									{siteUrl}
+									via1="@maxgraze"
+									via2="@datacitron"
+									description={metadescription}
+									hashtags="#jurassicpark"
+									related="@jurassic"
+									text={'twitter share'}
+								/>
+								<Button click={resetQuiz} type={'restart'} text={restartText} />
+								<Button click={resetQuiz} type={'dashboard'} text={dinoDashboardText} />
+								<Button click={resetQuiz} type={'dashboard'} text={deathDashboardText} />
+							</div>
+
+							<!-- <a href="/quiz"
+								><button class="bg-purple text-cream btn-small"
+									><TwitterIcon width={28} />
+									<span class="text-left"> Share my death on twitter </span></button
+								>
+							</a>
 							<Twitter {siteUrl} {title} />
 							<TwitterShare
 								{siteUrl}
@@ -173,7 +208,7 @@
 								text={metadescription}
 								hashtags="#jurassicpark"
 								related="@jurassic"
-							/>
+							/> -->
 						{/if}
 					</div>
 				</div>
@@ -204,7 +239,7 @@
 		right: 0px;
 		bottom: 0px;
 		left: 0px;
-		border-radius: 10rem;
+		/* border-radius: 10rem; */
 		background: linear-gradient(
 			to right,
 			theme('colors.blackish') 0%,
@@ -212,6 +247,10 @@
 			theme('colors.cream') 50%,
 			theme('colors.cream') 100%
 		);
+	}
+
+	.br {
+		border-radius: 10rem;
 	}
 
 	section {

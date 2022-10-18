@@ -6,8 +6,6 @@
 	import Gauge from './Gauge.svelte';
 	import { csv } from 'd3';
 
-	export let quizData;
-
 	function handleChange() {
 		activeQuestion = activeQuestion + 1;
 	}
@@ -32,7 +30,7 @@
 		// const res = await fetch('https://opentdb.com/api.php?amount=10&category=15&type=boolean');
 		// const quiz = await res.json();
 		// console.log(quiz);
-		const quiz = await csv(quizData);
+		const quiz = await csv($user.quiz);
 		return quiz;
 	}
 

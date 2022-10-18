@@ -3,6 +3,9 @@
 	import SEO from '$lib/components/SEO/index.svelte';
 	import website from '$lib/utils/website';
 	import { MetaTags } from 'svelte-meta-tags';
+	import TwitterIcon from '$lib/components/icons/TwitterIcon.svelte';
+	import Button from '$lib/components/Button.svelte';
+
 	let trexSound;
 
 	function playSound() {
@@ -32,7 +35,7 @@
 		el.scrollIntoView();
 	}
 
-	let twitterImageSrc = '/images/dino1.png';
+	let twitterImageSrc = 'jurassic-park-survival-quiz.netlify.app/images/dino1.png';
 	let featuredImageSrc = '/images/dino1.png';
 	let ogSquareImageSrc = '/images/dino1.png';
 	let ogImageSrc = '/images/dino1.png';
@@ -127,17 +130,18 @@
 		appId: '1234567890'
 	}}
 /> -->
-<a
-	href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-	class="twitter-share-button"
-	data-via="max_graze"
-	data-related="datacitron"
-	data-show-count="false">Tweet</a
->
-<!-- <SEO {...seoProps} /> -->
+
+<SEO {...seoProps} />
 <!-- <svelte:window bind:scrollY={y} /> -->
 <!-- <html lang="en" class="black-background"> -->
-<div class="container mx-auto box items-center" bind:this={box}>
+<div class="container mx-auto mt-24 box items-center" bind:this={box}>
+	<a
+		href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+		class="twitter-share-button"
+		data-via="max_graze"
+		data-related="datacitron"
+		data-show-count="false">Tweet</a
+	>
 	<div class="flex flex-col mt-10 md:mt-0 min-h-screen text-center ">
 		<h1 class="basis-1/3 md:text-h1 font-janguky md:text-6xl xl:text-7xl ">
 			How would <br />you <span class="text-purple">die</span> in <br />Jurassic movies?

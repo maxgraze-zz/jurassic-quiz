@@ -1,13 +1,15 @@
 <script>
 	import { user, score } from './store.js';
 	import Blurb from './Blurb.svelte';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onDestroy, afterUpdate } from 'svelte';
 	export let question;
 
 	const dispatch = createEventDispatcher();
 	let isCorrect;
 	$: currentQuestion = true;
 
+	onDestroy(() => console.log('question destroy'));
+	afterUpdate(() => console.log('question afterupdate'));
 	let answers = [
 		{
 			answer: question.incorrect_answer,

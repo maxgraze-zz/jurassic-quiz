@@ -3,12 +3,23 @@
 	import { user } from './store.js';
 
 	const characters = [
-		{ name: 'Expert', img: '/images/expert.png', av: '/images/expert_av.png' },
-		{ name: 'Park Employee', img: '/images/park_employee.png', av: '/images/employee_av.png' },
+		{
+			name: 'Expert',
+			img: '/images/expert.png',
+			av: '/images/expert_av.png',
+			quiz: 'data/data.csv'
+		},
+		{
+			name: 'Park Employee',
+			img: '/images/park_employee.png',
+			av: '/images/employee_av.png',
+			quiz: 'data/data.csv'
+		},
 		{
 			name: 'Annoying Child',
 			img: '/images/annoying_child.png',
-			av: '/images/annoying_child_av.png'
+			av: '/images/annoying_child_av.png',
+			quiz: 'data/data.csv'
 		}
 	];
 
@@ -24,7 +35,8 @@
 		return user.set({
 			character: character.name,
 			av: character.av,
-			score: 0
+			score: 0,
+			quiz: character.quiz
 		});
 	}
 

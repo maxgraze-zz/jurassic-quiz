@@ -24,11 +24,12 @@
 <!-- <Layout>
 	<slot />
 </Layout> -->
-<html class="normal-html">
-	<main class="normal-body min-h-screen px-8 md:pt-24 no-scrollbar select-none">
-		<slot />
-	</main>
-</html>
+<!-- <html class="normal-html"> -->
+<main>
+	<!-- <main class="normal-body min-h-screen px-8 md:pt-24 no-scrollbar select-none"> -->
+	<slot />
+</main>
+<!-- </html> -->
 <!-- {:else}
 	<html class="normal-html">
 		<main class="blurb-body min-h-screen px-8 md:pt-24 no-scrollbar select-none">
