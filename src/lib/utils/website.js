@@ -7,8 +7,7 @@
 let PUBLIC_CONTACT_EMAIL = 'maxene.graze@gmail.com.com';
 let PUBLIC_GITHUB_PAGE = 'maxgraze';
 let PUBLIC_TWITTER_USERNAME = 'maxgraze';
-let PUBLIC_DOMAIN = 'example.com';
-let PUBLIC_SITE_URL = 'jurassic-park-survival-quiz.netlify.app';
+let PUBLIC_SITE_URL = 'https://jurassic-park-survival-quiz.netlify.app/';
 
 const website = {
 	author: 'Max Graze, Data Citron',

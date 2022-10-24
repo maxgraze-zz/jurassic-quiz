@@ -49,7 +49,7 @@
 
 	<div class="flex gap-x-4 pt-8 w-11/12">
 		{#each allAnswers as answer}
-			<button class=" btn text-base font-body" on:click={() => checkQuestion(answer)}
+			<button class=" btn hover:gradient text-base font-body" on:click={() => checkQuestion(answer)}
 				>{@html answer.answer}</button
 			>
 		{/each}

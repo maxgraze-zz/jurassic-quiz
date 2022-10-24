@@ -46,15 +46,15 @@
 
 
 	.btn {
-		@apply cursor-pointer w-2/3 h-20 inline-block px-6 py-2 first:bg-purple last:bg-khaki text-cream font-janguky text-3xl rounded-[130px]  hover:gradient focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+		@apply cursor-pointer h-20 inline-block px-6 py-2 bg-purple text-cream font-janguky text-3xl rounded-[130px] focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
 	}
 
-	.btn2 {
-		@apply hover:scale-105 text-center cursor-pointer h-20 inline-block font-bold px-6 py-2 border-4 border-khaki text-khaki font-body text-xl rounded-[130px];
+	.twitter {
+		@apply  fill-purple
 	}
 
 	.btn-small {
-		@apply font-semibold py-2 px-4  space-x-2 flex items-center rounded-full w-48
+		@apply  px-4 py-2 font-semibold text-cream  flex items-center space-x-2 rounded-full w-48
 	}
 	.gradient {
 		@apply bg-gradient-to-r from-khaki via-pink to-purple;

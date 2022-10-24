@@ -119,11 +119,11 @@
 	};
 </script>
 
-<SEO {...seoProps} />
+<!-- <SEO {...seoProps} /> -->
 
 <div class="purple-black">
-	<div class="black-cream br">
-		<div class="grid grid-cols-2 grid-rows-1">
+	<div class="black-cream br sm:cream-sm">
+		<div class="grid md:grid-cols-2 grid-rows-1">
 			<div class="align-center mt-20 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
 			</div>
@@ -133,7 +133,7 @@
 					<Gauge />
 				</div>
 				<div class="text-center space-y-4">
-					<p class="font-janguky algin-center text-8xl mt-24">{blurb.title}</p>
+					<p class="font-janguky algin-center text-4xl md:text-8xl mt-24">{blurb.title}</p>
 					<p class="font-body font-bold text-3xl">{blurb.subtitle}</p>
 					<div class="space-y-6">
 						<p class="font-body mx-24 text-lg">
@@ -152,7 +152,7 @@
 				</div>
 			</div>
 		</div>
-		<section class=" grid grid-cols-2 grid-rows-1">
+		<section class=" md:grid md:grid-cols-2 md:grid-rows-1">
 			<div class="align-center mt-0 justify-center flex">
 				<img src={blurb.src} alt="dino illustration" class="pb-14" />
 			</div>
@@ -170,7 +170,7 @@
 						{#if isCorrect}
 							<button class="btn" on:click={nextQuestion}>Next Question</button>
 						{:else}
-							<div class="grid-cols-2 gap-5 grid w-96">
+							<div class="flex md:grid-cols-2 gap-5 md:grid w-96">
 								<a
 									href="https://twitter.com/share?ref_src=twsrc%5Etfw"
 									class="twitter-share-button"
@@ -180,7 +180,7 @@
 								>
 									<Button type={'twitter'} text={twitterText} />
 								</a>
-								<TwitterShare
+								<!-- <TwitterShare
 									{siteUrl}
 									via1="@maxgraze"
 									via2="@datacitron"
@@ -188,7 +188,7 @@
 									hashtags="#jurassicpark"
 									related="@jurassic"
 									text={'twitter share'}
-								/>
+								/> -->
 								<Button click={resetQuiz} type={'restart'} text={restartText} />
 								<Button click={resetQuiz} type={'dashboard'} text={dinoDashboardText} />
 								<Button click={resetQuiz} type={'dashboard'} text={deathDashboardText} />
@@ -247,6 +247,16 @@
 			theme('colors.cream') 50%,
 			theme('colors.cream') 100%
 		);
+	}
+	.cream-sm {
+		position: absolute;
+		overflow-y: auto;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		border-radius: 4rem;
+		background: theme('colors.cream') 100%;
 	}
 
 	.br {

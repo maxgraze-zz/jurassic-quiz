@@ -5,6 +5,7 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import TwitterIcon from '$lib/components/icons/TwitterIcon.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import TwitterShare from '$lib/components/socials/TwitterShare.svelte';
 
 	let trexSound;
 
@@ -35,10 +36,10 @@
 		el.scrollIntoView();
 	}
 
-	let twitterImageSrc = 'jurassic-park-survival-quiz.netlify.app/images/dino1.png';
-	let featuredImageSrc = '/images/dino1.png';
-	let ogSquareImageSrc = '/images/dino1.png';
-	let ogImageSrc = '/images/dino1.png';
+	let twitterImageSrc = 'https://jurassic-park-survival-quiz.netlify.app/images/twitter.png';
+	let featuredImageSrc = 'https://jurassic-park-survival-quiz.netlify.app/images/twitter.png';
+	let ogSquareImageSrc = 'https://jurassic-park-survival-quiz.netlify.app/images/twitter.png';
+	let ogImageSrc = 'https://jurassic-park-survival-quiz.netlify.app/images/twitter.png';
 
 	const { author, siteUrl } = website;
 
@@ -50,7 +51,7 @@
 		}
 	];
 
-	let metadescription = 'Jurassic Park Survival Quize';
+	let metadescription = 'Jurassic Park Survival Quiz';
 	const featuredImageAlt = 'picture of a dinosaur';
 	const featuredImage = {
 		url: featuredImageSrc,
@@ -140,8 +141,19 @@
 		class="twitter-share-button"
 		data-via="max_graze"
 		data-related="datacitron"
-		data-show-count="false">Tweet</a
+		data-show-count="false"
 	>
+		<Button type={'twitter'} text={'click to share'} />
+	</a>
+	<TwitterShare
+		{siteUrl}
+		via1="@maxgraze"
+		via2="@datacitron"
+		description={metadescription}
+		hashtags="#jurassicpark"
+		related="@jurassic"
+		text={'twitter share'}
+	/>
 	<div class="flex flex-col mt-10 md:mt-0 min-h-screen text-center ">
 		<h1 class="basis-1/3 md:text-h1 font-janguky md:text-6xl xl:text-7xl ">
 			How would <br />you <span class="text-purple">die</span> in <br />Jurassic movies?
@@ -173,13 +185,19 @@
 		doloremque perspiciatis dolorem alias esse corporis maxime quaerat! Voluptatum sequi cum culpa
 		nulla accusamus dignissimos! Unde aliquid possimus dicta incidunt officiis perspiciatis ex
 		corporis ut, quaerat molestiae illo deserunt, asperiores consectetur. Consectetur, asperiores.
-		<div id="start-quiz" class=" w-full relative flex pb-10 ">
-			<img class="" src="/images/dino1.png" alt="dino" />
-			<a href="/quiz"><button class="btn absolute bottom-1/4 left-44">Start Playing!</button></a>
-			<!-- <a href="/quiz"
+		<div id="start-quiz" class=" w-full relative pb-10 ">
+			<div class="items-center justify-center flex bottom-1/4 ">
+				<img class="" src="/images/dino1.png" alt="dino" />
+				<a href="/quiz"
+					><button class="btn hover:gradient -translate-x-[14rem] translate-y-10 "
+						>Start Playing!</button
+					></a
+				>
+				<!-- <a href="/quiz"
 				><button on:click={playSound} class="btn absolute bottom-1/4 left-44">Start Playing!</button
 				></a
 			> -->
+			</div>
 		</div>
 		<!-- <button on:click={playSound} > sound!</button> -->
 
